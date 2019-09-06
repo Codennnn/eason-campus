@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#707070",
+    "backgroundColor": "#fff",
+    "selectedColor": "#363636",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      },
+      {
+        "text": "课表",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/tabs/grid.png",
+        "selectedIconPath": "static/tabs/grid-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/logs/main",
+        "iconPath": "static/tabs/user.png",
+        "selectedIconPath": "static/tabs/user-active.png"
+      }
+    ],
+    "items": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      },
+      {
+        "name": "首页",
+        "pagePath": "pages/index/main",
+        "icon": "static/tabs/grid.png",
+        "activeIcon": "static/tabs/grid-active.png"
+      },
+      {
+        "name": "订单",
+        "pagePath": "pages/logs/main",
+        "icon": "static/tabs/user.png",
+        "activeIcon": "static/tabs/user-active.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  }
+}
