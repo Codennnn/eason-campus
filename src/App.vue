@@ -32,24 +32,12 @@ export default {
 
 <style>
 @import "../static/iconfont/iconfont.css";
+@import "./styles/common.css";
 
 .main {
   background: #f9f7fa;
 }
 
-.primary {
-  color: #5d97f7;
-}
-
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
 /* this rule will be remove */
 * {
   transition: width 2s;
