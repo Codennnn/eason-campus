@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/main",
+    "pages/schedule/main",
+    "pages/mine/main",
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main"
@@ -24,13 +26,13 @@
       },
       {
         "text": "课表",
-        "pagePath": "pages/index/main",
+        "pagePath": "pages/schedule/main",
         "iconPath": "static/tabs/grid.png",
         "selectedIconPath": "static/tabs/grid-active.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/logs/main",
+        "pagePath": "pages/mine/main",
         "iconPath": "static/tabs/user.png",
         "selectedIconPath": "static/tabs/user-active.png"
       }
@@ -43,14 +45,14 @@
         "selectedIconPath": "static/tabs/home-active.png"
       },
       {
-        "name": "首页",
-        "pagePath": "pages/index/main",
+        "name": "课表",
+        "pagePath": "pages/schedule/main",
         "icon": "static/tabs/grid.png",
         "activeIcon": "static/tabs/grid-active.png"
       },
       {
-        "name": "订单",
-        "pagePath": "pages/logs/main",
+        "name": "我的",
+        "pagePath": "pages/mine/main",
         "icon": "static/tabs/user.png",
         "activeIcon": "static/tabs/user-active.png"
       }

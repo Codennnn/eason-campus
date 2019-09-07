@@ -31,6 +31,8 @@ export default {
 </script>
 
 <style>
+@import "../static/iconfont/iconfont.css";
+
 .main {
   background: #f9f7fa;
 }
