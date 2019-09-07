@@ -33,6 +33,7 @@ export default {
 <style>
 @import "../static/iconfont/iconfont.css";
 @import "./styles/common.css";
+@import "./styles/distance.css";
 
 .main {
   background: #f9f7fa;

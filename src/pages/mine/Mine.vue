@@ -14,7 +14,7 @@
           type="userAvatarUrl"
         ></open-data>
         <div class="flex flex-column justify-center">
-          <div style="margin-bottom: 30rpx;">
+          <div class="mb-3">
             <open-data
               class="nick-name primary bg-white"
               type="userNickName"
@@ -39,11 +39,14 @@
 
       <!-- 卡片 -->
       <div class="user-card bg-white">
-        <div class="user-card__header flex align-center justify-between">
+        <div class="user-card__header flex align-center justify-between p-2">
           <div>查看个人信息</div>
-          <i class="iconfont icon-more"></i>
+          <i
+            class="iconfont icon-more"
+            style="font-size: 36rpx;"
+          ></i>
         </div>
-        <div class="user-card__content flex align-center justify-around">
+        <div class="user-card__content flex align-center justify-around py-3">
           <div
             class="user-card__section flex flex-column align-center justify-center"
             v-for="(section, i) in sections"
@@ -166,7 +169,7 @@ export default {
 }
 
 .nick-name {
-  max-width: 200rpx;
+  max-width: 300rpx;
   padding: 10rpx 15rpx;
   font-size: 32rpx;
   border-radius: 10rpx;
@@ -176,15 +179,11 @@ export default {
 .user-card {
   margin-top: 40rpx;
   border-radius: 10rpx;
+  box-shadow: 0 0 30rpx #ececec;
 }
 
 .user-card__header {
-  padding: 20rpx;
   border-bottom: 1rpx solid #ececec;
-}
-
-.user-card__content {
-  padding: 40rpx 0;
 }
 
 .user-card__icon {
