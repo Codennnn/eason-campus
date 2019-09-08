@@ -7,6 +7,7 @@
     />
 
     <div class="content p-4">
+      <!-- 首要功能 -->
       <div class="card flex justify-around">
         <div
           class="flex flex-column align-center justify-center"
@@ -21,6 +22,11 @@
           <div>{{ block.label }}</div>
         </div>
       </div>
+
+      <!-- 今日课程 -->
+      <div class="card"></div>
+
+      <!-- 次要功能 -->
       <div class="card flex justify-around">
         <div
           class="flex flex-column align-center justify-center"

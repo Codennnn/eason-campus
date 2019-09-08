@@ -3,6 +3,7 @@
     "pages/home/main",
     "pages/schedule/main",
     "pages/mine/main",
+    "pages/login/main",
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main"
@@ -35,26 +36,6 @@
         "pagePath": "pages/mine/main",
         "iconPath": "static/tabs/user.png",
         "selectedIconPath": "static/tabs/user-active.png"
-      }
-    ],
-    "items": [
-      {
-        "text": "首页",
-        "pagePath": "pages/home/main",
-        "iconPath": "static/tabs/home.png",
-        "selectedIconPath": "static/tabs/home-active.png"
-      },
-      {
-        "name": "课表",
-        "pagePath": "pages/schedule/main",
-        "icon": "static/tabs/grid.png",
-        "activeIcon": "static/tabs/grid-active.png"
-      },
-      {
-        "name": "我的",
-        "pagePath": "pages/mine/main",
-        "icon": "static/tabs/user.png",
-        "activeIcon": "static/tabs/user-active.png"
       }
     ],
     "position": "bottom"

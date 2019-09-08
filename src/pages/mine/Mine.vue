@@ -67,6 +67,7 @@
       </div>
     </div>
 
+    <!-- 单元格 -->
     <div class="cell-group mb-2 bg-white">
       <div
         class="cell flex align-center p-3"
@@ -81,8 +82,13 @@
         <i class="iconfont icon-arrow"></i>
       </div>
     </div>
+
+    <!-- 登录/取绑单元格 -->
     <div class="cell-group mb-2 bg-white">
-      <div class="cell flex align-center p-3">
+      <div
+        class="cell flex align-center p-3"
+        @click="goToLogin"
+      >
         <i class="iconfont icon-bind cell-icon mr-3"></i>
         <div>{{ logged ? '取消绑定' : '绑定学号' }}</div>
         <i class="iconfont icon-arrow"></i>
@@ -92,6 +98,8 @@
 </template>
 
 <script>
+import store from '@/store'
+
 const sections = [
   {
     label: '年级',
@@ -127,11 +135,24 @@ const cells = [
 export default {
   data () {
     return {
-      logged: true,
+      logged: false,
       sections,
       cells
     }
+  },
+
+  mounted () {
+    this.logged = store.state.logged
+  },
+
+  methods: {
+    goToLogin () {
+      if (this.logged) {
+        mpvue.navigateTo({ url: '../login/main' })
+      }
+    }
   }
+
 }
 </script>
 

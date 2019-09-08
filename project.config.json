@@ -9,7 +9,8 @@
 		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"uglifyFileName": true
+		"uglifyFileName": true,
+		"checkSiteMap": false
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
@@ -36,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -49,6 +50,13 @@
 					"id": -1,
 					"name": "我的",
 					"pathName": "pages/mine/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/main",
 					"scene": null
 				}
 			]

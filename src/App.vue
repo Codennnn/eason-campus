@@ -1,4 +1,6 @@
 <script>
+import store from '@/store'
+
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -24,6 +26,15 @@ export default {
       mpvue.setStorageSync('logs', logs)
     }
   },
+
+  mounted () {
+    const user = mpvue.getStorageSync('user')
+    if (user) {
+
+    }
+    console.log(store.state.logged, user)
+  },
+
   log () {
     console.log(`log at:${Date.now()}`)
   }
