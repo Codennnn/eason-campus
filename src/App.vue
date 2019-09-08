@@ -1,6 +1,4 @@
 <script>
-import store from '@/store'
-
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -32,7 +30,7 @@ export default {
     if (user) {
 
     }
-    console.log(store.state.logged, user)
+    console.log(this.$store.state.logged, user)
   },
 
   log () {

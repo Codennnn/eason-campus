@@ -35,7 +35,7 @@
           :maxlength="input.maxlength"
           :placeholder="input.placeholder"
           :placeholder-class="input.invalid ? 'input-invalid' : ''"
-          :style="error ? 'color: #ff9595;' : ''"
+          :style="input.error ? 'color: #ff9595;' : ''"
           @input="enter"
           @focus="focus(i)"
           @blur="blur(i)"
@@ -47,18 +47,33 @@
           @click.stop="clear(i)"
         ></i>
       </div>
-      <button
-        class="login-btn mt-1"
-        :disabled="disabled"
-        @click="login"
-      >登 录
-      </button>
-    </div>
 
+      <div style="width: 100%;">
+        <button
+          class="login-btn mt-1"
+          :style="loading ? ' visibility: hidden;' : ''"
+          :disabled="disabled"
+          @click="login"
+        >登 录
+        </button>
+
+        <!-- 加载动画 -->
+        <div
+          style="transform: translateY(-40rpx);"
+          v-show="loading"
+        >
+          <LoaderLine />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { getStudentInfo, getSchedule } from '@/request/api'
+
+import LoaderLine from '@/components/LoaderLine'
+
 const inputs = [
   {
     id: 'username',
@@ -91,9 +106,12 @@ const inputs = [
 export default {
   data () {
     return {
-      inputs
+      inputs,
+      loading: false
     }
   },
+
+  components: {LoaderLine},
 
   computed: {
     disabled () {
@@ -121,6 +139,7 @@ export default {
       const input = this.inputs[i]
       if (input.value.length > 0) {
         input.focus = true
+        input.error = false
       }
     },
 
@@ -132,10 +151,38 @@ export default {
       this.inputs[i].value = ''
     },
 
-    login () {
-      const username = this.inputs[0].value
-      const password = this.inputs[1].value
-      console.log(username, password)
+    async login () {
+      const loginData = {
+        username: this.inputs[0].value,
+        password: this.inputs[1].value
+      }
+      this.loading = true
+      const { code, msg, data } = await getStudentInfo(loginData)
+        .catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+
+      if (code === 1000) {
+        const res = await getSchedule(loginData)
+        if (res.code === 1000) {
+          mpvue.setStorageSync('user', loginData)
+          mpvue.setStorageSync('info', data.info)
+          mpvue.setStorageSync('schedule', res.data.courses)
+          wx.navigateBack()
+        } else {
+          wx.showToast({title: res.msg, icon: 'none'})
+        }
+      } else if (code === 2003) {
+        this.inputs[0].error = true
+        wx.showToast({title: msg, icon: 'none'})
+      } else if (code === 2002) {
+        this.inputs[1].error = true
+        wx.showToast({title: msg, icon: 'none'})
+      } else {
+        wx.showToast({title: msg, icon: 'none'})
+      }
+      this.loading = false
     }
   }
 }
