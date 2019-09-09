@@ -34,7 +34,7 @@
           :password="input.password"
           :maxlength="input.maxlength"
           :placeholder="input.placeholder"
-          :placeholder-class="input.invalid ? 'input-invalid' : ''"
+          :placeholder-class="input.invalid ? 'input-invalid' : 'gray'"
           :style="input.error ? 'color: #ff9595;' : ''"
           @input="enter"
           @focus="focus(i)"
@@ -46,6 +46,17 @@
           style="margin-left: auto;"
           @click.stop="clear(i)"
         ></i>
+      </div>
+
+      <div
+        class="flex align-center mb-2 gray"
+        style="margin-right: auto;font-size: 28rpx;"
+      >
+        登录前请先阅读
+        <navigator
+          url="../protocol/main"
+          class="primary"
+        >《隐私协议》</navigator>
       </div>
 
       <div style="width: 100%;">
