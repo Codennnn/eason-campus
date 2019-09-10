@@ -26,17 +26,36 @@
       </div>
 
       <!-- 今日课程 -->
-      <div class="card">
-        <div class="flex align-center justify-between">
+      <div
+        class="card"
+        style="padding: 0;"
+      >
+        <div class="header flex align-center justify-between px-3 pt-2 pb-1">
           <span>2019/9/10</span>
           <span>周二课程</span>
           <span class="flex align-center">
             <span
-              class="primary"
+              class="primary mr-1"
               style="font-weight: bold;font-size: 38rpx;"
             >2</span>
             周
           </span>
+        </div>
+        <div
+          class="to-login p-3"
+          v-if="!logged"
+        >
+          <div>
+            <image
+              class="to-login__icon mb-2"
+              mode="widthFix"
+              src="/static/images/empty-3.svg"
+            />
+            <navigator
+              class="to-login__btn bg-primary"
+              url="../login/main"
+            >去登录</navigator>
+          </div>
         </div>
       </div>
 
@@ -99,9 +118,14 @@ const sections = [
 export default {
   data () {
     return {
+      logged: false,
       blocks,
       sections
     }
+  },
+
+  mounted () {
+    this.logged = this.$store.state.logged
   }
 }
 </script>
@@ -125,6 +149,7 @@ export default {
 }
 
 .card {
+  box-sizing: border-box;
   margin-bottom: 25rpx;
   padding: 15rpx;
   background: white;
@@ -144,5 +169,28 @@ export default {
 
 .section-label {
   font-size: 25rpx;
+}
+
+.header {
+  border-bottom: 1rpx solid #ececec;
+}
+
+.to-login {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+.to-login__icon {
+  width: 40%;
+}
+.to-login__btn {
+  width: 180rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: white;
+  border-radius: 30rpx;
 }
 </style>

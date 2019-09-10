@@ -1,5 +1,8 @@
 <template>
-  <div class="main">
+  <div
+    class="main"
+    :style="showMask ? 'filter: blur(1rpx);' : ''"
+  >
     <image
       class="banner-bg"
       src="/static/images/mine-bg.png"
@@ -69,10 +72,11 @@
 
     <!-- 单元格 -->
     <div class="cell-group mb-2 bg-white">
-      <div
+      <navigator
         class="cell flex align-center p-3"
         v-for="(cell, i) in cells"
         :key="i"
+        url=""
       >
         <i
           class="iconfont cell-icon mr-3"
@@ -80,7 +84,7 @@
         ></i>
         <div>{{ cell.title }}</div>
         <i class="iconfont icon-arrow"></i>
-      </div>
+      </navigator>
     </div>
 
     <!-- 登录/取绑单元格 -->
@@ -92,6 +96,31 @@
         <i class="iconfont icon-bind cell-icon mr-3"></i>
         <div>{{ logged ? '取消绑定' : '绑定学号' }}</div>
         <i class="iconfont icon-arrow"></i>
+      </div>
+    </div>
+
+    <div class="mask">
+      <div class="mask-modal">
+        <div>
+          <image
+            class="mask-modal__img"
+            src="/static/images/img-modal.jpg"
+            mode="widthFix"
+          />
+        </div>
+        <div class="bg-white p-3">
+          <div class="mask-modal__text gray">解绑账号后会清除本地缓存数据，如个人信息、成绩、课表信息等，但在下次登录时仍会重新获取。</div>
+          <div class="footer flex align-center justify-between mt-3">
+            <div
+              class="footer-btn bg-white"
+              style="border: 1rpx solid #afafaf;color: #afafaf;"
+            >取消</div>
+            <div
+              class="footer-btn"
+              style="border: 1rpx solid #ff7474;background: #ff7474;color: white"
+            >解除绑定</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -137,7 +166,8 @@ export default {
     return {
       logged: false,
       sections,
-      cells
+      cells,
+      showMask: false
     }
   },
 
@@ -149,6 +179,8 @@ export default {
     goToLogin () {
       if (this.logged) {
         mpvue.navigateTo({ url: '../login/main' })
+      } else {
+        this.showMask = true
       }
     }
   }
@@ -225,5 +257,37 @@ export default {
 
 .icon-arrow {
   margin-left: auto;
+}
+
+.mask {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: rgba(90, 90, 90, 0.4);
+}
+.mask-modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.mask-modal__img {
+  width: 100%;
+}
+.mask-modal__text {
+  text-align: justify;
+}
+.footer-btn {
+  width: 43%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
 }
 </style>

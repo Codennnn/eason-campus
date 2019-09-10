@@ -12,7 +12,7 @@ export default {
 
     let logs
     if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
+      logs = mpvue.getStorageSync({ key: 'logs' }).data || []
       logs.unshift(Date.now())
       mpvue.setStorageSync({
         key: 'logs',
@@ -45,6 +45,7 @@ export default {
 @import "./styles/distance.css";
 
 .main {
+  font-size: 30rpx;
   background: #f9f7fa;
 }
 

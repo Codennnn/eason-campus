@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -65,6 +65,12 @@
 					"name": "协议",
 					"pathName": "pages/protocol/main",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "课表",
+					"pathName": "pages/schedule/main",
 					"scene": null
 				}
 			]
