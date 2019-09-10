@@ -19,43 +19,53 @@
 }
 
 .px-1 {
-  padding: 0 10rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 
 .px-2 {
-  padding: 0 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
 }
 
 .px-3 {
-  padding: 0 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 
 .px-4 {
-  padding: 0 40rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
 }
 
 .px-5 {
-  padding: 0 50rpx;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
 }
 
 .py-1 {
-  padding: 10rpx 0;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
 }
 
 .py-2 {
-  padding: 20rpx 0;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
 }
 
 .py-3 {
-  padding: 30rpx 0;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
 }
 
 .py-4 {
-  padding: 40rpx 0;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
 }
 
 .py-5 {
-  padding: 50rpx 0;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
 }
 
 .pl-1 {
@@ -159,43 +169,53 @@
 }
 
 .mx-1 {
-  margin: 0 10rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
 }
 
 .mx-2 {
-  margin: 0 20rpx;
+  margin-left:  20rpx;
+  margin-right: 20rpx;
 }
 
 .mx-3 {
-  margin: 0 30rpx;
+  margin-left: 30rpx;
+  margin-right:30rpx;
 }
 
 .mx-4 {
-  margin: 0 40rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
 }
 
 .mx-5 {
-  margin: 0 50rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
 }
 
 .my-1 {
-  margin: 10rpx 0;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .my-2 {
-  margin: 20rpx 0;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .my-3 {
-  margin: 30rpx 0;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }
 
 .my-4 {
-  margin: 40rpx 0;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
 }
 
 .my-5 {
-  margin: 50rpx 0;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
 }
 
 .ml-1 {

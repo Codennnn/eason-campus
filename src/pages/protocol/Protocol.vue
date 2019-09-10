@@ -42,6 +42,7 @@
   transform: translateX(-50%);
   width: 180rpx;
   height: 12rpx;
+  border-radius: 5rpx;
   background: #5d97f7;
 }
 

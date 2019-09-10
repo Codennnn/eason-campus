@@ -9,37 +9,53 @@
     <div class="content p-4">
       <!-- 首要功能 -->
       <div class="card flex justify-around">
-        <div
-          class="flex flex-column align-center justify-center"
+        <navigator
+          class="flex flex-column align-center justify-center px-4 py-1"
+          style="border-radius: 15rpx;"
           v-for="(block, i) in blocks"
           :key="i"
+          url
         >
           <image
-            class="block-icon mb-2"
+            class="block-icon mb-1"
             mode="widthFix"
             :src="block.icon"
           />
           <div>{{ block.label }}</div>
-        </div>
+        </navigator>
       </div>
 
       <!-- 今日课程 -->
-      <div class="card"></div>
+      <div class="card">
+        <div class="flex align-center justify-between">
+          <span>2019/9/10</span>
+          <span>周二课程</span>
+          <span class="flex align-center">
+            <span
+              class="primary"
+              style="font-weight: bold;font-size: 38rpx;"
+            >2</span>
+            周
+          </span>
+        </div>
+      </div>
 
       <!-- 次要功能 -->
       <div class="card flex justify-around">
-        <div
-          class="flex flex-column align-center justify-center"
+        <navigator
+          class="flex flex-column align-center justify-center py-2 px-3"
+          style="border-radius: 10rpx;"
           v-for="(section, i) in sections"
           :key="i"
+          url
         >
           <image
-            class="section-icon mb-2"
+            class="section-icon mb-1"
             mode="widthFix"
             :src="section.icon"
           />
           <div class="section-label">{{ section.label }}</div>
-        </div>
+        </navigator>
       </div>
     </div>
   </div>
@@ -49,7 +65,8 @@
 const blocks = [
   {
     label: '成绩',
-    icon: '/static/icons/icon-grade.png'
+    icon: '/static/icons/icon-grade.png',
+    url: ''
   },
   {
     label: '考勤',
@@ -109,6 +126,7 @@ export default {
 
 .card {
   margin-bottom: 25rpx;
+  padding: 15rpx;
   background: white;
   box-shadow: 0 0 20rpx #ececec;
   border-radius: 20rpx;
