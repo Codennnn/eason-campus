@@ -210,8 +210,8 @@ export default {
 
 .icon-back {
   position: fixed;
-  top: 65rpx;
-  left: 35rpx;
+  top: 5%;
+  left: 5%;
   font-size: 55rpx;
 }
 

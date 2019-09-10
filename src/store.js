@@ -6,7 +6,9 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     count: 0,
-    logged: true
+    logged: true,
+    currentWeek: 0,
+    currentDay: 1
   },
 
   mutations: {
@@ -17,6 +19,12 @@ const store = new Vuex.Store({
     decrement: (state) => {
       const obj = state
       obj.count -= 1
+    },
+    setTodayInfo: (state, data) => {
+      const obj = state
+      obj.currentWeek = data.currentWeek
+      obj.currentDay = data.currentDay
+      obj.currentDate = data.currentDate
     }
   }
 })

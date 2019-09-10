@@ -1,4 +1,6 @@
 <script>
+import { getTodayInfo } from './utils'
+
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -26,11 +28,12 @@ export default {
   },
 
   mounted () {
+    const data = getTodayInfo('2019/9/1')
+    this.$store.commit('setTodayInfo', data)
     const user = mpvue.getStorageSync('user')
     if (user) {
 
     }
-    console.log(this.$store.state.logged, user)
   },
 
   log () {

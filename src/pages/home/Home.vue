@@ -31,13 +31,13 @@
         style="padding: 0;"
       >
         <div class="header flex align-center justify-between px-3 pt-2 pb-1">
-          <span>2019/9/10</span>
-          <span>周二课程</span>
+          <span>{{ currentDate }}</span>
+          <span>{{ days[currentDay] }}课程</span>
           <span class="flex align-center">
             <span
               class="primary mr-1"
               style="font-weight: bold;font-size: 38rpx;"
-            >2</span>
+            >{{ currentWeek - 1 }}</span>
             周
           </span>
         </div>
@@ -114,18 +114,27 @@ const sections = [
     icon: '/static/icons/icon-flash.png'
   }
 ]
+const days = ['周一', '周二', '周三', '周四', '周五']
 
 export default {
   data () {
     return {
       logged: false,
       blocks,
-      sections
+      sections,
+      days,
+      currentWeek: 1,
+      currentDate: '',
+      currentDay: 0
     }
   },
 
   mounted () {
-    this.logged = this.$store.state.logged
+    const state = this.$store.state
+    this.logged = state.logged
+    this.currentWeek = state.currentWeek
+    this.currentDate = state.currentDate
+    this.currentDay = state.currentDay
   }
 }
 </script>

@@ -176,6 +176,12 @@ export default {
 
   mounted () {
     this.logged = store.state.logged
+    const userInfo = mpvue.getStorageSync('info')
+    if (userInfo) {
+      this.sections[0].value = userInfo[2].value
+      this.sections[1].value = userInfo[1].value
+      this.sections[2].value = userInfo[9].value
+    }
   },
 
   methods: {
