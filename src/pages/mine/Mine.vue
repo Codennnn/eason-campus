@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="main"
-    :style="showMask ? 'filter: blur(1rpx);' : ''"
-  >
+  <div class="main">
     <image
       class="banner-bg"
       src="/static/images/mine-bg.png"
@@ -99,7 +96,11 @@
       </div>
     </div>
 
-    <div class="mask">
+    <div
+      class="mask"
+      v-if="showMask"
+      @click="showMask = false"
+    >
       <div class="mask-modal">
         <div>
           <image
@@ -110,14 +111,16 @@
         </div>
         <div class="bg-white p-3">
           <div class="mask-modal__text gray">解绑账号后会清除本地缓存数据，如个人信息、成绩、课表信息等，但在下次登录时仍会重新获取。</div>
-          <div class="footer flex align-center justify-between mt-3">
+          <div class="footer flex align-center justify-between mt-4">
             <div
               class="footer-btn bg-white"
               style="border: 1rpx solid #afafaf;color: #afafaf;"
+              @click="showMask = false"
             >取消</div>
             <div
               class="footer-btn"
               style="border: 1rpx solid #ff7474;background: #ff7474;color: white"
+              @click="logout"
             >解除绑定</div>
           </div>
         </div>
@@ -178,10 +181,14 @@ export default {
   methods: {
     goToLogin () {
       if (this.logged) {
-        mpvue.navigateTo({ url: '../login/main' })
-      } else {
         this.showMask = true
+      } else {
+        mpvue.navigateTo({ url: '../login/main' })
       }
+    },
+
+    logout () {
+      this.showMask = false
     }
   }
 
@@ -285,8 +292,8 @@ export default {
 }
 .footer-btn {
   width: 43%;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 63rpx;
+  line-height: 63rpx;
   text-align: center;
   border-radius: 8rpx;
 }

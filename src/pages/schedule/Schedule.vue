@@ -3,7 +3,10 @@
     <div class="header bg-primary"></div>
 
     <div class="content">
-      <div class="to-login flex flex-column align-center justify-center">
+      <div
+        class="to-login flex flex-column align-center justify-center"
+        v-if="logged"
+      >
         <image
           class="to-login__icon"
           src="/static/images/img-tip.svg"
@@ -18,6 +21,16 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      logged: false
+    }
+  }
+}
+</script>
 
 <style>
 .main {
