@@ -2,13 +2,18 @@
 
 > 华软教务系统信息查询小程序
 
+## 提交符号大全
+🚀 代码优化
+⚡️ 性能优化
+🏆 新增功能
+🎨 样式调整
+🔧 修改配置
+🛠️ 修复BUG
+
+https://twemoji.maxcdn.com/2/test/preview.html
+
 ## Build Setup
-
 ``` bash
-# 初始化项目
-vue init mpvue/mpvue-quickstart myproject
-cd myproject
-
 # 安装依赖
 yarn 或 npm install
 
@@ -33,12 +38,3 @@ npm build:my
 # 生成 bundle 分析报告
 npm run build --report
 ```
-## 提交符号大全
-🚀 代码优化
-⚡️ 性能优化
-🏆 新增功能
-🎨 样式调整
-🔧 修改配置
-🛠️ 修复BUG
-
-https://twemoji.maxcdn.com/2/test/preview.html
