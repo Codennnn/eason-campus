@@ -4,6 +4,7 @@
     "pages/schedule/main",
     "pages/mine/main",
     "pages/login/main",
+    "pages/grade/main",
     "pages/protocol/main",
     "pages/user-info/main",
     "pages/index/main",
