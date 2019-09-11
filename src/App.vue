@@ -1,4 +1,6 @@
 <script>
+import { getTodayInfo } from './utils'
+
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -12,7 +14,7 @@ export default {
 
     let logs
     if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
+      logs = mpvue.getStorageSync({ key: 'logs' }).data || []
       logs.unshift(Date.now())
       mpvue.setStorageSync({
         key: 'logs',
@@ -24,6 +26,16 @@ export default {
       mpvue.setStorageSync('logs', logs)
     }
   },
+
+  mounted () {
+    const data = getTodayInfo('2019/9/1')
+    this.$store.commit('setTodayInfo', data)
+    // const user = mpvue.getStorageSync('user')
+    // if (user) {
+    //   }
+    this.$store.commit('login')
+  },
+
   log () {
     console.log(`log at:${Date.now()}`)
   }
@@ -31,23 +43,15 @@ export default {
 </script>
 
 <style>
+@import "../static/iconfont/iconfont.css";
+@import "./styles/common.css";
+@import "./styles/distance.css";
+
 .main {
+  font-size: 30rpx;
   background: #f9f7fa;
 }
 
-.primary {
-  color: #5d97f7;
-}
-
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
 /* this rule will be remove */
 * {
   transition: width 2s;
