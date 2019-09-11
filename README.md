@@ -12,7 +12,7 @@
 
 https://twemoji.maxcdn.com/2/test/preview.html
 
-## Build Setup
+## 项目运行
 ``` bash
 # 安装依赖
 yarn 或 npm install
