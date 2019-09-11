@@ -1,6 +1,6 @@
 # 意想课表
 
-> A Mpvue project
+> 华软教务系统信息查询小程序
 
 ## Build Setup
 
@@ -10,7 +10,7 @@ vue init mpvue/mpvue-quickstart myproject
 cd myproject
 
 # 安装依赖
-yarn
+yarn 或 npm install
 
 # 开发时构建
 npm dev
