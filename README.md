@@ -1,4 +1,4 @@
-# mpvue-hr
+# 意想课表
 
 > A Mpvue project
 
@@ -13,8 +13,6 @@ cd myproject
 yarn
 
 # 开发时构建
-`:tw-1f1e8-1f1f3:` 国旗
- `:tw-1f34b:`  柠檬
 npm dev
 
 # 打包构建
@@ -35,5 +33,5 @@ npm build:my
 # 生成 bundle 分析报告
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 提交符号大全
+https://twemoji.maxcdn.com/2/test/preview.html
