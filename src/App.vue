@@ -25,15 +25,17 @@ export default {
       logs.unshift(Date.now())
       mpvue.setStorageSync('logs', logs)
     }
-  },
 
-  mounted () {
+    // 设置当前周，当前星期几
     const data = getTodayInfo('2019/9/1')
     this.$store.commit('setTodayInfo', data)
-    // const user = mpvue.getStorageSync('user')
-    // if (user) {
-    //   }
-    this.$store.commit('login')
+
+    const user = mpvue.getStorageSync('user')
+    const userInfo = mpvue.getStorageSync('info')
+    if (user && userInfo) {
+      this.$store.commit('login')
+      this.$store.state.commit('setUserInfo', userInfo)
+    }
   },
 
   log () {

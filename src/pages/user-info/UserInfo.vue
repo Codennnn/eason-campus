@@ -15,17 +15,12 @@
 export default {
   data () {
     return {
-      info: [
-        {
-          label: '姓名',
-          value: '陈梓聪'
-        }
-      ]
+      info: []
     }
   },
 
   created () {
-    // this.info = mpvue.getStorageSync('info') || []
+    this.info = mpvue.getStorageSync('info') || []
   }
 }
 </script>
@@ -33,13 +28,5 @@ export default {
 <style scoped>
 .main {
   height: 100vh;
-}
-
-.item {
-  border-bottom: 1rpx solid #ececec;
-}
-
-.item:last-child {
-  border: none;
 }
 </style>

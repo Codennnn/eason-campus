@@ -21,34 +21,31 @@
               lang="zh_CN"
             ></open-data>
           </div>
-          <div>
+          <div class="user-content__text">
             <div
-              class="user-content__text flex align-center"
+              class="flex align-center"
               v-if="logged"
             >
               <span>已绑定Myscse账号</span>
               <i class="iconfont icon-v ml-1"></i>
             </div>
-            <span
-              class="user-content__text"
-              v-else
-            >未绑定Myscse账号</span>
+            <div v-else>未绑定Myscse账号</div>
           </div>
         </div>
       </div>
 
       <!-- 卡片 -->
       <div class="user-card bg-white">
-        <navigator
+        <div
           class="user-card__header flex align-center justify-between p-2"
-          url="../user-info/main"
+          @click="viewInfo"
         >
           <div>查看个人信息</div>
           <i
             class="iconfont icon-more"
             style="font-size: 36rpx;"
           ></i>
-        </navigator>
+        </div>
         <div class="user-card__content flex align-center justify-around py-3">
           <div
             class="user-card__section flex flex-column align-center justify-center"
@@ -64,7 +61,7 @@
               class="gray"
               style="margin: 15rpx 0;"
             >{{ section.label }}</div>
-            <div>{{ section.value }}</div>
+            <div>{{ info[i] || '--' }}</div>
           </div>
         </div>
       </div>
@@ -138,17 +135,14 @@ import store from '@/store'
 const sections = [
   {
     label: '年级',
-    value: '--',
     icon: '/static/icons/icon-major.png'
   },
   {
     label: '姓名',
-    value: '--',
     icon: '/static/icons/icon-student.png'
   },
   {
     label: '绩点',
-    value: '--',
     icon: '/static/icons/icon-grade-point.png'
   }
 ]
@@ -171,19 +165,29 @@ export default {
   data () {
     return {
       logged: false,
+      showMask: false, // 是否显示遮罩层
       sections,
-      cells,
-      showMask: false
+      cells
     }
   },
 
-  mounted () {
+  created () {
     this.logged = store.state.logged
     const userInfo = mpvue.getStorageSync('info')
     if (userInfo) {
       this.sections[0].value = userInfo[2].value
       this.sections[1].value = userInfo[1].value
       this.sections[2].value = userInfo[9].value
+    }
+  },
+
+  computed: {
+    info () {
+      const info = this.$store.state.info
+      if (info.length > 0) {
+        return [info[1].value, info[1].value, info[1].value]
+      }
+      return info
     }
   },
 
@@ -196,7 +200,24 @@ export default {
       }
     },
 
+    viewInfo () {
+      if (this.logged) {
+        mpvue.navigateTo({ url: '../user-info/main' })
+      } else {
+        mpvue.showModal({
+          content: '您还没有绑定Myscse账号哦',
+          cancelText: '取消',
+          confirmText: '去登录',
+          confirmColor: '#5d97f7',
+          success: () => {
+            mpvue.navigateTo({ url: '../login/main' })
+          }
+        })
+      }
+    },
+
     logout () {
+      this.$store.state.commit('logged')
       this.showMask = false
     }
   }
@@ -292,7 +313,17 @@ export default {
   width: 75%;
   border-radius: 10rpx;
   overflow: hidden;
+  animation: 0.3s ease 0s scale;
 }
+@keyframes scale {
+  from {
+    transform: translateX(-50%) scale(0);
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
 .mask-modal__img {
   width: 100%;
 }

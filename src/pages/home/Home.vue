@@ -43,7 +43,20 @@
         </div>
         <div
           class="to-login p-3"
-          v-if="!logged"
+          v-if="currentDay"
+        >
+          <div>
+            <image
+              class="to-login__icon mb-2"
+              mode="widthFix"
+              src="/static/images/empty-1.svg"
+            />
+            <div class="gray">周末愉快</div>
+          </div>
+        </div>
+        <div
+          class="to-login p-3"
+          v-elif="!logged"
         >
           <div>
             <image
@@ -114,12 +127,11 @@ const sections = [
     icon: '/static/icons/icon-flash.png'
   }
 ]
-const days = ['周一', '周二', '周三', '周四', '周五']
+const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 
 export default {
   data () {
     return {
-      logged: false,
       blocks,
       sections,
       days,
@@ -131,10 +143,15 @@ export default {
 
   mounted () {
     const state = this.$store.state
-    this.logged = state.logged
     this.currentWeek = state.currentWeek
     this.currentDate = state.currentDate
     this.currentDay = state.currentDay
+  },
+
+  computed: {
+    logged () {
+      return this.$store.state.logged
+    }
   }
 }
 </script>

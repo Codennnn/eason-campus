@@ -8,7 +8,8 @@ const store = new Vuex.Store({
     count: 0,
     logged: false,
     currentWeek: 0,
-    currentDay: 1
+    currentDay: 1,
+    info: []
   },
 
   mutations: {
@@ -20,15 +21,24 @@ const store = new Vuex.Store({
       const obj = state
       obj.count -= 1
     },
-    login: (state) => {
-      const obj = state
-      obj.logged = true
+
+    login (state) {
+      state.logged = true
     },
-    setTodayInfo: (state, data) => {
-      const obj = state
-      obj.currentWeek = data.currentWeek
-      obj.currentDay = data.currentDay
-      obj.currentDate = data.currentDate
+
+    logout (state) {
+      state.logged = false
+      state.info = []
+    },
+
+    setUserInfo (state, data) {
+      state.info = data
+    },
+
+    setTodayInfo (state, data) {
+      state.currentWeek = data.currentWeek
+      state.currentDay = data.currentDay
+      state.currentDate = data.currentDate
     }
   }
 })
