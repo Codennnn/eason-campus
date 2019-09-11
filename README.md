@@ -34,4 +34,5 @@ npm build:my
 npm run build --report
 ```
 ## 提交符号大全
+⚡️ 性能优化
 https://twemoji.maxcdn.com/2/test/preview.html
