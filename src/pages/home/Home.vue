@@ -8,7 +8,7 @@
 
     <div class="content p-4">
       <!-- 首要功能 -->
-      <div class="card flex justify-around">
+      <div class="card slide-left flex justify-around">
         <navigator
           class="flex flex-column align-center justify-center px-4 py-1"
           style="border-radius: 15rpx;"
@@ -27,7 +27,7 @@
 
       <!-- 今日课程 -->
       <div
-        class="card"
+        class="card slide-right"
         style="padding: 0;"
       >
         <div class="header flex align-center justify-between px-3 pt-2 pb-1">
@@ -60,7 +60,7 @@
       </div>
 
       <!-- 次要功能 -->
-      <div class="card flex justify-around">
+      <div class="card slide-left flex justify-around">
         <navigator
           class="flex flex-column align-center justify-center py-2 px-3"
           style="border-radius: 10rpx;"
@@ -164,6 +164,30 @@ export default {
   background: white;
   box-shadow: 0 0 20rpx #ececec;
   border-radius: 20rpx;
+}
+
+.slide-left {
+  animation: 1.2s ease 0s slide_left;
+}
+@keyframes slide_left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.slide-right {
+  animation: 1.2s ease 0s slide_right;
+}
+@keyframes slide_right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }
 
 .block-icon {

@@ -122,7 +122,7 @@ export default {
     }
   },
 
-  components: {LoaderLine},
+  components: { LoaderLine },
 
   computed: {
     disabled () {
@@ -180,20 +180,21 @@ export default {
           mpvue.setStorageSync('user', loginData)
           mpvue.setStorageSync('info', data.info)
           mpvue.setStorageSync('schedule', res.data.courses)
-          wx.navigateBack()
+          mpvue.navigateBack()
         } else {
-          wx.showToast({title: res.msg, icon: 'none'})
+          mpvue.showToast({ title: res.msg, icon: 'none' })
         }
       } else if (code === 2003) {
         this.inputs[0].error = true
-        wx.showToast({title: msg, icon: 'none'})
+        mpvue.showToast({ title: msg, icon: 'none' })
       } else if (code === 2002) {
         this.inputs[1].error = true
-        wx.showToast({title: msg, icon: 'none'})
+        mpvue.showToast({ title: msg, icon: 'none' })
       } else {
-        wx.showToast({title: msg, icon: 'none'})
+        mpvue.showToast({ title: msg, icon: 'none' })
       }
       this.loading = false
+      mpvue.navigateBack()
     }
   }
 }

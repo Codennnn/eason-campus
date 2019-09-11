@@ -3,13 +3,15 @@
     <div class="header bg-primary"></div>
     <div class="grid bg-white">
       <div></div>
-      <div
-        class="week py-2"
-        v-for="(week, i) in weeks"
-        :key="i"
-      >
-        {{ week }}
-      </div>
+      <template v-if="logged">
+        <div
+          class="week py-2"
+          v-for="(week, i) in weeks"
+          :key="i"
+        >
+          {{ week }}
+        </div>
+      </template>
     </div>
 
     <div class="content">
@@ -91,7 +93,7 @@ export default {
 
   computed: {
     schedule () {
-      if (this.currentWeek) {
+      if (this.logged && this.currentWeek) {
         return this.getCurrentSchedule(this.currentWeek)
       }
       return []

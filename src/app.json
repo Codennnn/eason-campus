@@ -5,14 +5,15 @@
     "pages/mine/main",
     "pages/login/main",
     "pages/protocol/main",
+    "pages/user-info/main",
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#5d97f7",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#707070",

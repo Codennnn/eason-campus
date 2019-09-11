@@ -39,13 +39,16 @@
 
       <!-- 卡片 -->
       <div class="user-card bg-white">
-        <div class="user-card__header flex align-center justify-between p-2">
+        <navigator
+          class="user-card__header flex align-center justify-between p-2"
+          url="../user-info/main"
+        >
           <div>查看个人信息</div>
           <i
             class="iconfont icon-more"
             style="font-size: 36rpx;"
           ></i>
-        </div>
+        </navigator>
         <div class="user-card__content flex align-center justify-around py-3">
           <div
             class="user-card__section flex flex-column align-center justify-center"
