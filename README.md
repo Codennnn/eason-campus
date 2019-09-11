@@ -13,7 +13,8 @@ cd myproject
 yarn
 
 # 开发时构建
-:tw-1f1e8-1f1f3:
+`:tw-1f1e8-1f1f3:` 国旗
+ `:tw-1f34b:`  柠檬
 npm dev
 
 # 打包构建
