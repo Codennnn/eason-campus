@@ -19,7 +19,6 @@ const store = new Vuex.Store({
     decrement: (state) => {
       const obj = state
       obj.count -= 1
-      // :tw-1f1e8-1f1f3:
     },
     login: (state) => {
       const obj = state
