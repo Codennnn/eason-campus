@@ -209,7 +209,7 @@ export default {
           cancelText: '取消',
           confirmText: '去登录',
           confirmColor: '#5d97f7',
-          success: () => {
+          success () {
             mpvue.navigateTo({ url: '../login/main' })
           }
         })
@@ -217,7 +217,7 @@ export default {
     },
 
     logout () {
-      this.$store.state.commit('logged')
+      this.$store.commit('logout')
       this.showMask = false
     }
   }

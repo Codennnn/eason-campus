@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     count: 0,
-    logged: false,
+    logged: true,
     currentWeek: 0,
     currentDay: 1,
     info: []

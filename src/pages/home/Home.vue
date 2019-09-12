@@ -41,22 +41,26 @@
             周
           </span>
         </div>
+
+        <!-- 周末愉快 -->
         <div
           class="to-login p-3"
-          v-if="currentDay"
+          v-if="logged && currentDay === 5 || currentDay === 6"
         >
           <div>
             <image
               class="to-login__icon mb-2"
               mode="widthFix"
-              src="/static/images/empty-1.svg"
+              src="/static/images/img-tip0.svg"
             />
             <div class="gray">周末愉快</div>
           </div>
         </div>
+
+        <!-- 去登录 -->
         <div
           class="to-login p-3"
-          v-elif="!logged"
+          v-if="!logged"
         >
           <div>
             <image
