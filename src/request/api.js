@@ -17,6 +17,12 @@ export async function getSchedule (data) {
   return res
 }
 
+export async function getCurrentGrades (data) {
+  data.current_term = '2019年第一学期'
+  const res = await request.post(`${host}/current-grades`, data)
+  return res
+}
+
 export async function getAllGrades (data) {
   const res = await request.post(`${host}/all-grades`, data)
   return res
