@@ -7,9 +7,9 @@
     "pages/grade/main",
     "pages/protocol/main",
     "pages/user-info/main",
-    "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main"
+    "pages/exam-time/main",
+    "pages/usual-grade/main",
+    "pages/logs/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

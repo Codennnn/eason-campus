@@ -84,7 +84,7 @@ export default {
     }
   },
 
-  mounted () {
+  created () {
     const state = this.$store.state
     this.logged = state.logged
     this.currentWeek = state.currentWeek

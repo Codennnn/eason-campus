@@ -83,7 +83,7 @@
           style="border-radius: 10rpx;"
           v-for="(section, i) in sections"
           :key="i"
-          url
+          :url="section.url"
         >
           <image
             class="section-icon mb-1"
@@ -106,29 +106,35 @@ const blocks = [
   },
   {
     label: '考勤',
-    icon: '/static/icons/icon-attendance.png'
+    icon: '/static/icons/icon-attendance.png',
+    url: '../grade/main'
   },
   {
     label: '考试',
-    icon: '/static/icons/icon-notice.png'
+    icon: '/static/icons/icon-notice.png',
+    url: '../exam-time/main'
   }
 ]
 const sections = [
   {
     label: '华软校历',
-    icon: '/static/icons/icon-cal.png'
+    icon: '/static/icons/icon-cal.png',
+    url: '../usual-grade/main'
   },
   {
     label: '平时成绩',
-    icon: '/static/icons/icon-pin.png'
+    icon: '/static/icons/icon-pin.png',
+    url: '../usual-grade/main'
   },
   {
     label: '待开发',
-    icon: '/static/icons/icon-tag.png'
+    icon: '/static/icons/icon-tag.png',
+    url: '../usual-grade/main'
   },
   {
     label: '待开发',
-    icon: '/static/icons/icon-flash.png'
+    icon: '/static/icons/icon-flash.png',
+    url: '../usual-grade/main'
   }
 ]
 const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']

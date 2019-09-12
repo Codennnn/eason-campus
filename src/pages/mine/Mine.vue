@@ -130,8 +130,6 @@
 </template>
 
 <script>
-import store from '@/store'
-
 const sections = [
   {
     label: '年级',
@@ -164,7 +162,6 @@ const cells = [
 export default {
   data () {
     return {
-      logged: false,
       showMask: false, // 是否显示遮罩层
       sections,
       cells
@@ -172,7 +169,6 @@ export default {
   },
 
   created () {
-    this.logged = store.state.logged
     const userInfo = mpvue.getStorageSync('info')
     if (userInfo) {
       this.sections[0].value = userInfo[2].value
@@ -182,6 +178,10 @@ export default {
   },
 
   computed: {
+    logged () {
+      return this.$store.state.logged
+    },
+
     info () {
       const info = this.$store.state.info
       if (info.length > 0) {

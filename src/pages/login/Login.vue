@@ -138,6 +138,7 @@ export default {
       this.debounce(this.getInputValue, 500)(e)
     },
 
+    // 防抖函数
     debounce (fn, delay) {
       return function (args) {
         const _args = args
