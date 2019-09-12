@@ -8,7 +8,7 @@
 
     <div class="content p-4">
       <!-- 首要功能 -->
-      <div class="card slide-left flex justify-around">
+      <div class="card flex justify-around">
         <navigator
           class="flex flex-column align-center justify-center px-4 py-1"
           style="border-radius: 15rpx;"
@@ -27,10 +27,10 @@
 
       <!-- 今日课程 -->
       <div
-        class="card slide-right"
+        class="card"
         style="padding: 0;"
       >
-        <div class="header flex align-center justify-between px-3 pt-2 pb-1">
+        <div class="schedule-header flex align-center justify-between px-3 pt-2 pb-1">
           <span>{{ currentDate }}</span>
           <span>{{ days[currentDay] }}课程</span>
           <span class="flex align-center">
@@ -40,6 +40,19 @@
             >{{ currentWeek - 1 }}</span>
             周
           </span>
+        </div>
+        <div
+          class="schedule-content p-3"
+          v-if="logged"
+        >
+          <div
+            class="schedule-item flex align-center justify-between mb-1"
+            v-for="(item, key) in schedules"
+            :key="key"
+          >
+            <span class="gray">{{ item.period }}</span>
+            <span>{{ item.name }}</span>
+          </div>
         </div>
 
         <!-- 周末愉快 -->
@@ -77,7 +90,7 @@
       </div>
 
       <!-- 次要功能 -->
-      <div class="card slide-left flex justify-around">
+      <div class="card flex justify-around">
         <navigator
           class="flex flex-column align-center justify-center py-2 px-3"
           style="border-radius: 10rpx;"
@@ -147,20 +160,58 @@ export default {
       days,
       currentWeek: 1,
       currentDate: '',
-      currentDay: 0
+      currentDay: 0,
+      schedules: []
     }
   },
 
-  mounted () {
+  created () {
     const state = this.$store.state
     this.currentWeek = state.currentWeek
     this.currentDate = state.currentDate
     this.currentDay = state.currentDay
   },
 
+  mounted () {
+    this.setSchedule()
+  },
+
   computed: {
     logged () {
       return this.$store.state.logged
+    }
+  },
+
+  methods: {
+    setSchedule () {
+      const schedules = []
+
+      const day = this.currentDay
+      const week = this.currentWeek
+      const periods = [
+        '09:00 - 10:20',
+        '10:40 - 12:00',
+        '12:30 - 13:50',
+        '14:00 - 15:20',
+        '15:30 - 16:50',
+        '17:00 - 18:20',
+        '19:00 - 20:20',
+        '20:30 - 21:50'
+      ]
+
+      mpvue.getStorageSync('schedule').forEach((item, i) => {
+        const course = item[day].course
+        if (course.length > 0) {
+          course.forEach(el => {
+            if (el.weeks.includes(week)) {
+              el.period = periods[i]
+              schedules.push(el)
+            }
+          })
+        }
+      })
+
+      this.schedules = schedules
     }
   }
 }
@@ -176,6 +227,9 @@ export default {
 
 .banner-img {
   width: 100%;
+  position: relative;
+  z-index: 9999;
+  box-shadow: 0 0 45rpx #f9f7fa;
 }
 
 .content {
@@ -194,30 +248,6 @@ export default {
   border-radius: 20rpx;
 }
 
-.slide-left {
-  animation: 1.2s ease 0s slide_left;
-}
-@keyframes slide_left {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-.slide-right {
-  animation: 1.2s ease 0s slide_right;
-}
-@keyframes slide_right {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
 .block-icon {
   width: 100rpx;
   height: 100rpx;
@@ -232,8 +262,15 @@ export default {
   font-size: 25rpx;
 }
 
-.header {
+.schedule-header {
   border-bottom: 1rpx solid #ececec;
+}
+
+.schedule-content {
+  font-size: 26rpx;
+}
+.schedule-item:last-child {
+  margin-bottom: 0;
 }
 
 .to-login {

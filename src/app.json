@@ -9,6 +9,7 @@
     "pages/user-info/main",
     "pages/exam-time/main",
     "pages/usual-grade/main",
+    "pages/about/main",
     "pages/logs/main"
   ],
   "window": {

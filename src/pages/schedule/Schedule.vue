@@ -111,7 +111,7 @@ export default {
         return el.map(item => {
           if (item.course.length > 0) {
             const course = item.course.filter(it => {
-              return it.weeks.includes(this.currentWeek)
+              return it.weeks.includes(week)
             })
             return { course }
           }

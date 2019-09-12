@@ -71,12 +71,12 @@
     <div class="cell-group mb-2 bg-white">
       <navigator
         class="cell flex align-center p-3"
-        v-for="(cell, i) in cells"
-        :key="i"
-        url=""
+        v-for="(cell, key) in cells"
+        :key="key"
+        :url="cell.url"
       >
         <i
-          class="iconfont cell-icon mr-3"
+          class="iconfont cell-icon ml-1 mr-3"
           :class="cell.icon"
         ></i>
         <div>{{ cell.title }}</div>
@@ -90,7 +90,7 @@
         class="cell flex align-center p-3"
         @click="goToLogin"
       >
-        <i class="iconfont icon-bind cell-icon mr-3"></i>
+        <i class="iconfont icon-bind cell-icon ml-1 mr-3"></i>
         <div>{{ logged ? '取消绑定' : '绑定学号' }}</div>
         <i class="iconfont icon-arrow"></i>
       </div>
@@ -147,15 +147,18 @@ const sections = [
 const cells = [
   {
     title: '待开发功能',
-    icon: 'icon-block'
+    icon: 'icon-block',
+    url: '../../main'
   },
   {
     title: '关于本程序',
-    icon: 'icon-code'
+    icon: 'icon-code',
+    url: '../about/main'
   },
   {
     title: '更多信息',
-    icon: 'icon-list'
+    icon: 'icon-list',
+    url: '../more/main'
   }
 ]
 
@@ -209,8 +212,10 @@ export default {
           cancelText: '取消',
           confirmText: '去登录',
           confirmColor: '#5d97f7',
-          success () {
-            mpvue.navigateTo({ url: '../login/main' })
+          success ({ confirm }) {
+            if (confirm) {
+              mpvue.navigateTo({ url: '../login/main' })
+            }
           }
         })
       }

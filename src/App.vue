@@ -21,7 +21,7 @@ export default {
     const user = mpvue.getStorageSync('user')
     const userInfo = mpvue.getStorageSync('info')
     if (user && userInfo) {
-      // commit('login')
+      commit('login')
       commit('setUserInfo', userInfo)
     }
   }
