@@ -135,15 +135,32 @@ export default {
 
   methods: {
     enter (e) {
-      const value = e.target.value
+      this.debounce(this.getInputValue, 500)(e)
+    },
 
-      if (e.target.id === 'username') {
+    debounce (fn, delay) {
+      return function (args) {
+        const _args = args
+
+        clearTimeout(fn.id)
+
+        fn.id = setTimeout(() => {
+          fn.call(this, _args)
+        }, delay)
+      }
+    },
+
+    getInputValue (e) {
+      const value = e.target.value
+      const id = e.target.id
+      if (id === 'username') {
         this.inputs[0].value = value.trim()
         this.inputs[0].focus = true
-      } else if (e.target.id === 'password') {
+      } else if (id === 'password') {
         this.inputs[1].value = value.trim()
         this.inputs[1].focus = true
       }
+      console.log(this.inputs[0].value, this.inputs[1].value)
     },
 
     focus (i) {
@@ -167,7 +184,10 @@ export default {
         username: this.inputs[0].value,
         password: this.inputs[1].value
       }
+
+      // 显示加载动画
       this.loading = true
+
       const { code, msg, data } = await getStudentInfo(loginData)
         .catch(err => {
           this.loading = false
@@ -177,6 +197,7 @@ export default {
       if (code === 1000) {
         const res = await getSchedule(loginData)
         if (res.code === 1000) {
+          this.$store.state.commit('login')
           mpvue.setStorageSync('user', loginData)
           mpvue.setStorageSync('info', data.info)
           mpvue.setStorageSync('schedule', res.data.courses)
@@ -193,8 +214,9 @@ export default {
       } else {
         mpvue.showToast({ title: msg, icon: 'none' })
       }
+
+      // 关闭加载动画
       this.loading = false
-      mpvue.navigateBack()
     }
   }
 }

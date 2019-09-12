@@ -1,16 +1,21 @@
-# mpvue-hr
+# 意想课表
 
-> A Mpvue project
+> 华软教务系统信息查询小程序
 
-## Build Setup
+## 提交符号大全
+🚀 代码优化
+⚡️ 性能优化
+🏆 新增功能
+🎨 样式调整
+🔧 修改配置
+🛠️ 修复BUG
 
+https://twemoji.maxcdn.com/2/test/preview.html
+
+## 项目运行
 ``` bash
-# 初始化项目
-vue init mpvue/mpvue-quickstart myproject
-cd myproject
-
 # 安装依赖
-yarn
+yarn 或 npm install
 
 # 开发时构建
 npm dev
@@ -33,5 +38,3 @@ npm build:my
 # 生成 bundle 分析报告
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

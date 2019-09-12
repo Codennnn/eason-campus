@@ -14,7 +14,7 @@
           style="border-radius: 15rpx;"
           v-for="(block, i) in blocks"
           :key="i"
-          url
+          :url="block.url"
         >
           <image
             class="block-icon mb-1"
@@ -98,7 +98,7 @@ const blocks = [
   {
     label: '成绩',
     icon: '/static/icons/icon-grade.png',
-    url: ''
+    url: '../grade/main'
   },
   {
     label: '考勤',
