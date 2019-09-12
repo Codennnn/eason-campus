@@ -182,6 +182,7 @@ export default {
   flex: 1;
   height: auto;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .card {

@@ -14,34 +14,36 @@
       </template>
     </div>
 
-    <div class="content">
-      <div
-        class="grid courses"
-        v-for="(item, i) in schedule"
-        :key="i"
-      >
-        <!-- 时间段 -->
-        <div class="period flex align-center justify-center p-3">
-          {{ periods[i] }}
-        </div>
-        <!-- 课程内容 -->
+    <div class="content py-1">
+      <template v-if="logged">
         <div
-          class="course flex align-center justify-center"
-          v-for="(it, key) in item"
-          :key="key"
+          class="grid courses"
+          v-for="(item, i) in schedule"
+          :key="i"
         >
-          <div
-            class="course-content flex flex-column align-center justify-center"
-            :style="currentDay === key ? 'background: #5d97f7' : ''"
-            v-if="it.course.length > 0"
-          >
-            <span class="mb-1">{{ it.course[0].name }}</span>
-            <br />
-            <span>{{ it.course[0].addr }}</span>
+          <!-- 时间段 -->
+          <div class="period flex align-center justify-center p-3">
+            {{ periods[i] }}
           </div>
-          <div v-else></div>
+          <!-- 课程内容 -->
+          <div
+            class="course flex align-center justify-center"
+            v-for="(it, key) in item"
+            :key="key"
+          >
+            <div
+              class="course-content flex flex-column align-center justify-center"
+              :style="currentDay === key ? 'background: #5d97f7' : ''"
+              v-if="it.course.length > 0"
+            >
+              <span class="mb-1">{{ it.course[0].name }}</span>
+              <br />
+              <span>{{ it.course[0].addr }}</span>
+            </div>
+            <div v-else></div>
+          </div>
         </div>
-      </div>
+      </template>
 
       <!-- 前往登录 -->
       <div
@@ -67,7 +69,6 @@
 export default {
   data () {
     return {
-      logged: false,
       currentDay: null,
       currentWeek: null,
       periods: [
@@ -86,12 +87,15 @@ export default {
 
   created () {
     const state = this.$store.state
-    this.logged = state.logged
     this.currentWeek = state.currentWeek
     this.currentDay = state.currentDay
   },
 
   computed: {
+    logged () {
+      return this.$store.state.logged
+    },
+
     schedule () {
       if (this.logged && this.currentWeek) {
         return this.getCurrentSchedule(this.currentWeek)

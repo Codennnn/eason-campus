@@ -192,13 +192,13 @@ export default {
       const { code, msg, data } = await getStudentInfo(loginData)
         .catch(err => {
           this.loading = false
-          console.log(err)
+          mpvue.showToast({ title: err, icon: 'none' })
         })
 
       if (code === 1000) {
         const res = await getSchedule(loginData)
         if (res.code === 1000) {
-          this.$store.state.commit('login')
+          this.$store.commit('login')
           mpvue.setStorageSync('user', loginData)
           mpvue.setStorageSync('info', data.info)
           mpvue.setStorageSync('schedule', res.data.courses)

@@ -12,34 +12,18 @@ export default {
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
 
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({ key: 'logs' }).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
-      })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
-    }
+    const { commit } = this.$store
 
     // 设置当前周，当前星期几
     const data = getTodayInfo('2019/9/1')
-    this.$store.commit('setTodayInfo', data)
+    commit('setTodayInfo', data)
 
     const user = mpvue.getStorageSync('user')
     const userInfo = mpvue.getStorageSync('info')
     if (user && userInfo) {
-      this.$store.commit('login')
-      this.$store.state.commit('setUserInfo', userInfo)
+      // commit('login')
+      commit('setUserInfo', userInfo)
     }
-  },
-
-  log () {
-    console.log(`log at:${Date.now()}`)
   }
 }
 </script>
