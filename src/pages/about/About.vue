@@ -53,7 +53,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     mpvue.getStorageInfo({
       success: (res) => {
         const size = res.currentSize

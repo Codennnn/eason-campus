@@ -1,9 +1,24 @@
 <template>
   <div class="main">
-    <div class="header bg-primary"></div>
     <div class="grid bg-white">
-      <div></div>
       <template v-if="logged">
+        <div
+          class="line-group week flex flex-column align-center justify-center py-2"
+          @click="active = !active"
+        >
+          <div
+            class="line"
+            :class=" active ? 'line-one-active' : ''"
+          ></div>
+          <div
+            class="line"
+            :class=" active ? 'line-two-active' : ''"
+          ></div>
+          <div
+            class="line"
+            :class=" active ? 'line-three-active' : ''"
+          ></div>
+        </div>
         <div
           class="week py-2"
           v-for="(week, i) in weeks"
@@ -15,7 +30,7 @@
     </div>
 
     <div class="content py-1">
-      <template v-if="logged">
+      <template v-if="logged && currentWeek">
         <div
           class="grid courses"
           v-for="(item, i) in schedule"
@@ -81,14 +96,18 @@ export default {
         '19:00 - 20:20',
         '20:30 - 21:50'
       ],
-      weeks: ['周一', '周二', '周三', '周四', '周五']
+      weeks: ['周一', '周二', '周三', '周四', '周五'],
+      active: false
     }
   },
 
-  created () {
+  mounted () {
     const state = this.$store.state
     this.currentWeek = state.currentWeek
     this.currentDay = state.currentDay
+    mpvue.setNavigationBarTitle({
+      title: `第 ${this.currentWeek} 周课表`
+    })
   },
 
   computed: {
@@ -133,6 +152,31 @@ export default {
 
 .header {
   height: 10%;
+}
+
+.line {
+  width: 45rpx;
+  height: 5rpx;
+  margin: 5rpx 0;
+  background: rgb(85, 85, 85);
+  border-radius: 3rpx;
+  transition: all ease 0.3s;
+}
+
+.line-one-active {
+  width: 38rpx;
+  transform-origin: 8%;
+  transform: rotateZ(45deg);
+}
+
+.line-two-active {
+  opacity: 0;
+}
+
+.line-three-active {
+  width: 38rpx;
+  transform-origin: 8%;
+  transform: rotateZ(-45deg);
 }
 
 .content {

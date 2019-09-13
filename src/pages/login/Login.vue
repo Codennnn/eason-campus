@@ -180,24 +180,27 @@ export default {
     },
 
     async login () {
+      // 显示加载动画
+      this.loading = true
+
       const loginData = {
         username: this.inputs[0].value,
         password: this.inputs[1].value
       }
 
-      // 显示加载动画
-      this.loading = true
-
       const { code, msg, data } = await getStudentInfo(loginData)
         .catch(err => {
           this.loading = false
-          mpvue.showToast({ title: err, icon: 'none' })
+          mpvue.showModal({ content: '登录失败！' })
+          throw new Error(err)
         })
 
       if (code === 1000) {
         const res = await getSchedule(loginData)
         if (res.code === 1000) {
           this.$store.commit('login')
+          this.$store.commit('setUserInfo', data.info)
+
           mpvue.setStorageSync('user', loginData)
           mpvue.setStorageSync('info', data.info)
           mpvue.setStorageSync('schedule', res.data.courses)

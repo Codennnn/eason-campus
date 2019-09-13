@@ -13,13 +13,15 @@
 
 <script>
 export default {
+  name: 'user-info',
+
   data () {
     return {
       info: []
     }
   },
 
-  created () {
+  mounted () {
     this.info = mpvue.getStorageSync('info') || []
   }
 }

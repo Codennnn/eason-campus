@@ -41,7 +41,7 @@ export function getTodayInfo (start) {
   dateDiff = today - startDate
   dateDiff = parseInt(dateDiff / oneDay)
   // 计算当前是第几周
-  weekInfo.week = Math.ceil((dateDiff - weekLeave) / WEEKLEN) + 1
+  weekInfo.week = Math.ceil((dateDiff - weekLeave) / WEEKLEN)
 
   return {
     currentWeek: weekInfo.week,

@@ -171,15 +171,6 @@ export default {
     }
   },
 
-  created () {
-    const userInfo = mpvue.getStorageSync('info')
-    if (userInfo) {
-      this.sections[0].value = userInfo[2].value
-      this.sections[1].value = userInfo[1].value
-      this.sections[2].value = userInfo[9].value
-    }
-  },
-
   computed: {
     logged () {
       return this.$store.state.logged
@@ -188,7 +179,7 @@ export default {
     info () {
       const info = this.$store.state.info
       if (info.length > 0) {
-        return [info[1].value, info[1].value, info[1].value]
+        return [info[2].value, info[1].value, info[9].value]
       }
       return info
     }
@@ -208,7 +199,7 @@ export default {
         mpvue.navigateTo({ url: '../user-info/main' })
       } else {
         mpvue.showModal({
-          content: '您还没有绑定Myscse账号哦',
+          content: '您还没有绑定 Myscse 账号哦',
           confirmText: '去绑定',
           confirmColor: '#5d97f7',
           success ({ confirm }) {
@@ -221,8 +212,9 @@ export default {
     },
 
     logout () {
-      this.$store.commit('logout')
       this.showMask = false
+      this.$store.commit('logout')
+      mpvue.navigateTo({ url: '../login/main' })
     }
   }
 

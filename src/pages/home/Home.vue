@@ -37,7 +37,7 @@
             <span
               class="primary mr-1"
               style="font-weight: bold;font-size: 38rpx;"
-            >{{ currentWeek - 1 }}</span>
+            >{{ currentWeek }}</span>
             周
           </span>
         </div>
@@ -138,7 +138,7 @@ const sections = [
   {
     label: '华软校历',
     icon: '/static/icons/icon-cal.png',
-    url: '../usual-grade/main'
+    url: '../calendar/main'
   },
   {
     label: '平时成绩',
@@ -171,7 +171,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     const state = this.$store.state
     this.currentWeek = state.currentWeek
     this.currentDate = state.currentDate
@@ -225,7 +225,7 @@ export default {
         mpvue.navigateTo({ url })
       } else {
         mpvue.showModal({
-          content: '您还没有绑定 Myscse 账号',
+          content: '您还没有绑定 Myscse 账号哦',
           confirmText: '去绑定',
           confirmColor: '#5d97f7',
           success ({ confirm }) {

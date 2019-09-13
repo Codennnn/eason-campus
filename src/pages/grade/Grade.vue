@@ -159,7 +159,7 @@ export default {
 
   components: { LoaderCircle },
 
-  created () {
+  mounted () {
     this.account = mpvue.getStorageSync('user')
     this.getCurrentGrades()
   },
@@ -175,6 +175,7 @@ export default {
 
     // 获取当前学期成绩
     async getCurrentGrades () {
+      this.error = false
       this.loading = true
       this.disabled = true
 
@@ -203,6 +204,7 @@ export default {
 
     // 获取所有成绩
     async getAllGrades () {
+      this.error = false
       this.loading2 = true
 
       try {
