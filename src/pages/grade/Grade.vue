@@ -12,8 +12,10 @@
         @click="currentTab = 1"
       >当前学期</div>
     </div>
+
     <div class="swiper">
       <swiper
+        style="height: 100%;"
         duration="300"
         :current="currentTab"
         @change="swiperTab"
@@ -23,15 +25,28 @@
             class="swiper-scroll"
             :scroll-y="true"
           >
-            <div class="py-5 px-4">
+            <div class="scroll-wrapper">
               <div class="card">
                 <div class="title">当前学期</div>
                 <div class="content">
                   <div
-                    v-if="currentGrades.length === 0"
+                    v-if="loading"
                     style="height:400rpx"
                   >
                     <LoaderCircle />
+                  </div>
+                  <!-- 错误提示 -->
+                  <div
+                    class="text-center py-2"
+                    v-else-if="error"
+                  >
+                    <image
+                      class="mb-3"
+                      style="width: 350rpx;"
+                      :src="errorImage"
+                      mode="widthFix"
+                    />
+                    <div class="gray">{{ errorText }}</div>
                   </div>
                   <template v-else>
                     <div
@@ -39,11 +54,18 @@
                       v-for="(item, key) in currentGrades"
                       :key="key"
                     >
-                      <span class="">{{ item.name }}</span>
+                      <span>{{ item.name }}</span>
                       <span class="gray">{{ item.score }}</span>
                     </div>
                   </template>
                 </div>
+              </div>
+              <div style="overflow: hidden;">
+                <button
+                  class="btn bg-primary mt-1"
+                  :disabled="disabled"
+                  @click="getCurrentGrades"
+                >查询最新成绩</button>
               </div>
             </div>
           </scroll-view>
@@ -53,15 +75,26 @@
             class="swiper-scroll"
             :scroll-y="true"
           >
-            <div
-              class="py-5 px-4"
-              style="height: 100%;"
-            >
+            <div class="scroll-wrapper">
               <div
                 style="height: 100%;"
-                v-if="allGrades.length === 0"
+                v-if="loading2"
               >
                 <LoaderCircle />
+              </div>
+              <!-- 错误提示 -->
+              <div
+                class="flex flex-column justify-center align-center py-2"
+                style="height: 100%;"
+                v-else-if="error2"
+              >
+                <image
+                  class="mb-3"
+                  style="width: 350rpx;"
+                  :src="errorImage2"
+                  mode="widthFix"
+                />
+                <div class="gray">{{ errorText2 }}</div>
               </div>
               <template v-else>
                 <div
@@ -90,8 +123,8 @@
                 </div>
               </template>
               <div
-                class="gray pt-2 pb-3"
-                style="text-align: center;"
+                v-if="allGrades.length !== 0"
+                class="text-center gray pt-2 pb-4"
               >- 已经到底啦 -</div>
             </div>
           </scroll-view>
@@ -108,15 +141,26 @@ import LoaderCircle from '@/components/LoaderCircle'
 export default {
   data () {
     return {
+      account: {},
       currentTab: 0,
       currentGrades: [],
-      allGrades: []
+      allGrades: [],
+      loading: true,
+      loading2: true,
+      disabled: false,
+      errorImage: '',
+      errorImage2: '',
+      errorText: '',
+      errorText2: '',
+      error: false,
+      error2: false
     }
   },
 
   components: { LoaderCircle },
 
-  mounted () {
+  created () {
+    this.account = mpvue.getStorageSync('user')
     this.getCurrentGrades()
   },
 
@@ -129,23 +173,57 @@ export default {
       }
     },
 
+    // 获取当前学期成绩
     async getCurrentGrades () {
-      const user = mpvue.getStorageSync('user')
-      const { code, msg, data } = await getCurrentGrades(user)
-      if (code === 1000) {
-        this.currentGrades = data.courses
-      } else {
-        mpvue.showToast({title: msg, icon: 'none'})
+      this.loading = true
+      this.disabled = true
+
+      try {
+        const { code, data } = await getCurrentGrades(this.account)
+        if (code === 1000) {
+          this.currentGrades = data.courses
+        } else {
+          this.error = true
+          this.errorImage = '/static/images/empty-2.svg'
+          if (code === 2001) {
+            this.errorText = 'Myscse 的登录密码错误，请重新绑定账号 (｡•ˇ‸ˇ•｡)'
+          } else {
+            this.errorText = '爬取教务系统失败 (｡•ˇ‸ˇ•｡)'
+          }
+        }
+      } catch (err) {
+        this.error = true
+        this.errorImage = '/static/images/empty-1.svg'
+        this.errorText = '服务器罢工了 (｡•ˇ‸ˇ•｡)'
+      } finally {
+        this.loading = false
+        this.disabled = false
       }
     },
 
+    // 获取所有成绩
     async getAllGrades () {
-      const user = mpvue.getStorageSync('user')
-      const { code, msg, data } = await getAllGrades(user)
-      if (code === 1000) {
-        this.allGrades = data.courses
-      } else {
-        mpvue.showToast({title: msg, icon: 'none'})
+      this.loading2 = true
+
+      try {
+        const { code, data } = await getAllGrades(this.account)
+        if (code === 1000) {
+          this.allGrades = data.courses
+        } else {
+          this.error2 = true
+          this.errorImage2 = '/static/images/empty-2.svg'
+          if (code === 2001) {
+            this.errorText2 = 'Myscse 的登录密码错误，请重新绑定账号 (｡•ˇ‸ˇ•｡)'
+          } else {
+            this.errorText2 = '爬取教务系统失败 (｡•ˇ‸ˇ•｡)'
+          }
+        }
+      } catch (err) {
+        this.error2 = true
+        this.errorImage2 = '/static/images/empty-1.svg'
+        this.errorText2 = '服务器罢工了 (｡•ˇ‸ˇ•｡)'
+      } finally {
+        this.loading2 = false
       }
     }
   }
@@ -161,6 +239,7 @@ export default {
 }
 
 .tabs {
+  box-sizing: border-box;
   width: 100%;
   height: 90rpx;
   line-height: 90rpx;
@@ -189,12 +268,17 @@ export default {
   width: 50%;
 }
 
-swiper {
-  height: 100%;
+.swiper {
+  height: calc(100% - 90rpx);
+}
+
+.swiper-item {
+  flex: 1;
+  position: relative;
+  min-height: 100%;
 }
 
 .swiper-scroll {
-  box-sizing: border-box;
   position: absolute;
   left: 0;
   right: 0;
@@ -202,14 +286,10 @@ swiper {
   bottom: 0;
 }
 
-.swiper {
-  flex: 1;
-  position: relative;
-}
-
-.swiper-item {
-  min-height: 100%;
+.scroll-wrapper {
   box-sizing: border-box;
+  height: 100%;
+  padding: 50rpx 40rpx;
 }
 
 .card {
@@ -235,5 +315,9 @@ swiper {
 
 .content .item {
   padding: 5rpx 0;
+}
+
+.btn {
+  color: white;
 }
 </style>

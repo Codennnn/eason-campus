@@ -22,6 +22,10 @@
   align-items: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .primary {
   color: #5d97f7;
 }

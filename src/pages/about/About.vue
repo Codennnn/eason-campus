@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="logo-content bg-white py-3">
+    <div class="logo-content text-center bg-white py-3">
       <image
         class="logo"
         src="/static/images/logo.png"
@@ -71,10 +71,6 @@ export default {
 <style scoped>
 .main {
   height: 100vh;
-}
-
-.logo-content {
-  text-align: center;
 }
 
 .logo {

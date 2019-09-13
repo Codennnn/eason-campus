@@ -9,12 +9,12 @@
     <div class="content p-4">
       <!-- 首要功能 -->
       <div class="card flex justify-around">
-        <navigator
-          class="flex flex-column align-center justify-center px-4 py-1"
+        <div
+          class="block flex flex-column align-center justify-center px-4 py-1"
           style="border-radius: 15rpx;"
           v-for="(block, i) in blocks"
           :key="i"
-          :url="block.url"
+          @click="routerTo(block.url)"
         >
           <image
             class="block-icon mb-1"
@@ -22,7 +22,7 @@
             :src="block.icon"
           />
           <div>{{ block.label }}</div>
-        </navigator>
+        </div>
       </div>
 
       <!-- 今日课程 -->
@@ -45,14 +45,20 @@
           class="schedule-content p-3"
           v-if="logged"
         >
+          <template v-if="schedules.length > 0">
+            <div
+              class="schedule-item flex align-center justify-between mb-1"
+              v-for="(item, key) in schedules"
+              :key="key"
+            >
+              <span class="gray">{{ item.period }}</span>
+              <span>{{ item.name }}</span>
+            </div>
+          </template>
           <div
-            class="schedule-item flex align-center justify-between mb-1"
-            v-for="(item, key) in schedules"
-            :key="key"
-          >
-            <span class="gray">{{ item.period }}</span>
-            <span>{{ item.name }}</span>
-          </div>
+            class="text-center gray"
+            v-else
+          >今日无课，宜休息</div>
         </div>
 
         <!-- 周末愉快 -->
@@ -66,13 +72,13 @@
               mode="widthFix"
               src="/static/images/img-tip0.svg"
             />
-            <div class="gray">周末愉快</div>
+            <div class="gray">周末愉快ヽ( ^∀^)ﾉ</div>
           </div>
         </div>
 
         <!-- 去登录 -->
         <div
-          class="to-login p-3"
+          class="to-login text-center p-3"
           v-if="!logged"
         >
           <div>
@@ -91,12 +97,12 @@
 
       <!-- 次要功能 -->
       <div class="card flex justify-around">
-        <navigator
-          class="flex flex-column align-center justify-center py-2 px-3"
+        <div
+          class="section flex flex-column align-center justify-center py-2 px-3"
           style="border-radius: 10rpx;"
           v-for="(section, i) in sections"
           :key="i"
-          :url="section.url"
+          @click="routerTo(section.url)"
         >
           <image
             class="section-icon mb-1"
@@ -104,7 +110,7 @@
             :src="section.icon"
           />
           <div class="section-label">{{ section.label }}</div>
-        </navigator>
+        </div>
       </div>
     </div>
   </div>
@@ -172,13 +178,13 @@ export default {
     this.currentDay = state.currentDay
   },
 
-  mounted () {
-    this.setSchedule()
-  },
-
   computed: {
     logged () {
-      return this.$store.state.logged
+      const logged = this.$store.state.logged
+      if (logged) {
+        this.setSchedule()
+      }
+      return logged
     }
   },
 
@@ -212,6 +218,23 @@ export default {
       })
 
       this.schedules = schedules
+    },
+
+    routerTo (url) {
+      if (this.logged) {
+        mpvue.navigateTo({ url })
+      } else {
+        mpvue.showModal({
+          content: '您还没有绑定 Myscse 账号',
+          confirmText: '去绑定',
+          confirmColor: '#5d97f7',
+          success ({ confirm }) {
+            if (confirm) {
+              mpvue.navigateTo({ url: '../login/main' })
+            }
+          }
+        })
+      }
     }
   }
 }
@@ -248,9 +271,17 @@ export default {
   border-radius: 20rpx;
 }
 
+.block:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .block-icon {
   width: 100rpx;
   height: 100rpx;
+}
+
+.section:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .section-icon {
@@ -276,7 +307,6 @@ export default {
 .to-login {
   box-sizing: border-box;
   width: 100%;
-  text-align: center;
 }
 .to-login__icon {
   width: 40%;

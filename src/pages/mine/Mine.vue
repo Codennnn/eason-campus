@@ -209,8 +209,7 @@ export default {
       } else {
         mpvue.showModal({
           content: '您还没有绑定Myscse账号哦',
-          cancelText: '取消',
-          confirmText: '去登录',
+          confirmText: '去绑定',
           confirmColor: '#5d97f7',
           success ({ confirm }) {
             if (confirm) {

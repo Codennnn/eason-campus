@@ -161,7 +161,6 @@ export default {
         this.inputs[1].value = value.trim()
         this.inputs[1].focus = true
       }
-      console.log(this.inputs[0].value, this.inputs[1].value)
     },
 
     focus (i) {

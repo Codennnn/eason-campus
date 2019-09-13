@@ -1,5 +1,5 @@
 <template>
-  <div class="main pt-5">
+  <div class="main text-center pt-5">
     <i class="iconfont icon-protocol mt-5"></i>
     <div class="protocol mb-2">隐私协议</div>
     <div class="p-5">
@@ -22,7 +22,6 @@
 .main {
   box-sizing: border-box;
   height: 100vh;
-  text-align: center;
   background: white;
   overflow: hidden;
 }

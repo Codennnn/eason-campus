@@ -17,6 +17,7 @@ const store = new Vuex.Store({
     },
 
     logout (state) {
+      mpvue.clearStorage()
       state.logged = false
       state.info = []
     },
