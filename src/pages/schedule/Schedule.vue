@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <div class="grid bg-white">
+    <div
+      class="hidden-bar "
+      :class="active ? 'show' : 'hide'"
+    >123</div>
+    <div class="day-bar grid bg-white">
       <template v-if="logged">
         <div
           class="line-group week flex flex-column align-center justify-center py-2"
@@ -21,10 +25,10 @@
         </div>
         <div
           class="week py-2"
-          v-for="(week, i) in weeks"
+          v-for="(day, i) in days"
           :key="i"
         >
-          {{ week }}
+          {{ day }}
         </div>
       </template>
     </div>
@@ -96,7 +100,7 @@ export default {
         '19:00 - 20:20',
         '20:30 - 21:50'
       ],
-      weeks: ['周一', '周二', '周三', '周四', '周五'],
+      days: ['周一', '周二', '周三', '周四', '周五'],
       active: false
     }
   },
@@ -152,6 +156,27 @@ export default {
 
 .header {
   height: 10%;
+}
+
+.hidden-bar {
+  margin: 0 auto;
+  transition: all ease 0.3s;
+}
+
+.show {
+  height: 150rpx;
+  line-height: 150rpx;
+}
+
+.hide {
+  height: 0;
+  line-height: 0;
+}
+
+.day-bar {
+  position: relative;
+  z-index: 9999;
+  box-shadow: 0 10rpx 40rpx #fff;
 }
 
 .line {
