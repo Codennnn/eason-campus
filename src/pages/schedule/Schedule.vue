@@ -3,14 +3,13 @@
     <div
       class="hidden-bar "
       :class="active ? 'show' : 'hide'"
-    >123
+    >
       <picker
         @change="weekChange"
-        :value="weeks"
+        :value="index"
+        :range="weeks"
       >
-        <div class="picker">
-          当前选择：{{array[index]}}
-        </div>
+        <div v-show="active">选择周数</div>
       </picker>
     </div>
     <div class="day-bar grid bg-white">
@@ -110,7 +109,7 @@ export default {
         '20:30 - 21:50'
       ],
       days: ['周一', '周二', '周三', '周四', '周五'],
-      weeks: [1, 2, 3],
+      weeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
       active: false
     }
   },
@@ -119,9 +118,7 @@ export default {
     const state = this.$store.state
     this.currentWeek = state.currentWeek
     this.currentDay = state.currentDay
-    mpvue.setNavigationBarTitle({
-      title: `第 ${this.currentWeek} 周课表`
-    })
+    this.setNavigationBarTitle(this.currentWeek)
   },
 
   computed: {
@@ -153,8 +150,17 @@ export default {
       })
     },
 
+    setNavigationBarTitle (week) {
+      mpvue.setNavigationBarTitle({
+        title: `第 ${week} 周课表`
+      })
+    },
+
     weekChange (e) {
-      console.log(e)
+      const selectedWeek = +e.mp.detail.value + 1
+      this.currentWeek = selectedWeek
+      this.setNavigationBarTitle(this.currentWeek)
+      this.active = false
     }
   }
 }

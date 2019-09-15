@@ -41,6 +41,7 @@
             周
           </span>
         </div>
+
         <div
           class="schedule-content p-3"
           v-if="logged"
@@ -55,18 +56,11 @@
               <span>{{ item.name }}</span>
             </div>
           </template>
+          <!-- 周末愉快 -->
           <div
-            class="text-center gray"
-            v-else
-          >今日无课，宜休息</div>
-        </div>
-
-        <!-- 周末愉快 -->
-        <div
-          class="to-login p-3"
-          v-if="logged && currentDay === 5 || currentDay === 6"
-        >
-          <div>
+            class="to-login text-center"
+            v-else-if="currentDay === 5 || currentDay === 6"
+          >
             <image
               class="to-login__icon mb-2"
               mode="widthFix"
@@ -74,6 +68,10 @@
             />
             <div class="gray">周末愉快ヽ( ^∀^)ﾉ</div>
           </div>
+          <div
+            class="text-center gray"
+            v-else
+          >今日无课，宜休息</div>
         </div>
 
         <!-- 去登录 -->
@@ -204,6 +202,7 @@ export default {
         '19:00 - 20:20',
         '20:30 - 21:50'
       ]
+      console.log(day)
 
       mpvue.getStorageSync('schedule').forEach((item, i) => {
         const course = item[day].course
