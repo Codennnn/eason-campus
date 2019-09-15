@@ -3,7 +3,16 @@
     <div
       class="hidden-bar "
       :class="active ? 'show' : 'hide'"
-    >123</div>
+    >123
+      <picker
+        @change="weekChange"
+        :value="weeks"
+      >
+        <div class="picker">
+          当前选择：{{array[index]}}
+        </div>
+      </picker>
+    </div>
     <div class="day-bar grid bg-white">
       <template v-if="logged">
         <div
@@ -101,6 +110,7 @@ export default {
         '20:30 - 21:50'
       ],
       days: ['周一', '周二', '周三', '周四', '周五'],
+      weeks: [1, 2, 3],
       active: false
     }
   },
@@ -141,6 +151,10 @@ export default {
           return item
         })
       })
+    },
+
+    weekChange (e) {
+      console.log(e)
     }
   }
 }
