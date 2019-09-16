@@ -1,16 +1,30 @@
 <template>
   <div class="main">
     <div
-      class="hidden-bar "
-      :class="active ? 'show' : 'hide'"
+      class="hidden-bar flex align-center justify-around bg-white"
+      :class="!active ? 'show' : 'hide'"
     >
       <picker
+        style="flex: 1;"
         @change="weekChange"
         :value="index"
         :range="weeks"
       >
-        <div v-show="active">选择周数</div>
+        <i
+          class="iconfont icon-group"
+          data-label="选择周数"
+        ></i>
       </picker>
+      <i
+        class="iconfont icon-done"
+        data-label="当前周"
+        @click="setCurrentSchedule"
+      ></i>
+      <i
+        class="iconfont icon-calendar"
+        data-label="全学期"
+        @click="setAllSchedule"
+      ></i>
     </div>
     <div class="day-bar grid bg-white">
       <template v-if="logged">
@@ -60,6 +74,7 @@
           >
             <div
               class="course-content flex flex-column align-center justify-center"
+              :class="it.course[0].weeks.includes($store.state.currentWeek) ? 'gray' : ''"
               :style="currentDay === key ? 'background: #5d97f7' : ''"
               v-if="it.course.length > 0"
             >
@@ -67,6 +82,11 @@
               <br />
               <span>{{ it.course[0].addr }}</span>
             </div>
+            <!-- <div v-else-if="">
+              <span class="mb-1">{{ it.course[0].name }}</span>
+              <br />
+              <span>{{ it.course[0].addr }}</span>
+            </div> -->
             <div v-else></div>
           </div>
         </div>
@@ -137,17 +157,20 @@ export default {
   methods: {
     // 获取当前周的课表
     getCurrentSchedule (week) {
-      return mpvue.getStorageSync('schedule').map(el => {
-        return el.map(item => {
-          if (item.course.length > 0) {
-            const course = item.course.filter(it => {
-              return it.weeks.includes(week)
-            })
-            return { course }
-          }
-          return item
+      if (week <= 18) {
+        return mpvue.getStorageSync('schedule').map(el => {
+          return el.map(item => {
+            if (item.course.length > 0) {
+              const course = item.course.filter(it => {
+                return it.weeks.includes(week)
+              })
+              return { course }
+            }
+            return item
+          })
         })
-      })
+      }
+      return mpvue.getStorageSync('schedule')
     },
 
     setNavigationBarTitle (week) {
@@ -157,10 +180,19 @@ export default {
     },
 
     weekChange (e) {
-      const selectedWeek = +e.mp.detail.value + 1
-      this.currentWeek = selectedWeek
-      this.setNavigationBarTitle(this.currentWeek)
+      this.setNavigationBarTitle(+e.mp.detail.value + 1)
       this.active = false
+    },
+
+    setCurrentSchedule () {
+      const state = this.$store.state
+      this.currentWeek = state.currentWeek
+      this.setNavigationBarTitle(this.currentWeek)
+    },
+
+    setAllSchedule () {
+      this.currentWeek = 19
+      mpvue.setNavigationBarTitle({ title: '全学期课表' })
     }
   }
 }
@@ -179,16 +211,35 @@ export default {
 }
 
 .hidden-bar {
+  width: 100vw;
   margin: 0 auto;
+  text-align: center;
   transition: all ease 0.3s;
 }
 
+.iconfont {
+  position: relative;
+  flex: 1;
+  font-size: 50rpx;
+}
+.iconfont::after {
+  position: absolute;
+  width: 150rpx;
+  content: attr(data-label);
+  bottom: -45rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26rpx;
+}
+
 .show {
+  opacity: 1;
   height: 150rpx;
   line-height: 150rpx;
 }
 
 .hide {
+  opacity: 0;
   height: 0;
   line-height: 0;
 }
@@ -207,17 +258,14 @@ export default {
   border-radius: 3rpx;
   transition: all ease 0.3s;
 }
-
 .line-one-active {
   width: 38rpx;
   transform-origin: 8%;
   transform: rotateZ(45deg);
 }
-
 .line-two-active {
   opacity: 0;
 }
-
 .line-three-active {
   width: 38rpx;
   transform-origin: 8%;
