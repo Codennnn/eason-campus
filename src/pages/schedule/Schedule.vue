@@ -2,7 +2,7 @@
   <div class="main">
     <div
       class="hidden-bar flex align-center justify-around bg-white"
-      :class="!active ? 'show' : 'hide'"
+      :class="active ? 'show' : 'hide'"
     >
       <picker
         style="flex: 1;"
@@ -74,7 +74,6 @@
           >
             <div
               class="course-content flex flex-column align-center justify-center"
-              :class="it.course[0].weeks.includes($store.state.currentWeek) ? 'gray' : ''"
               :style="currentDay === key ? 'background: #5d97f7' : ''"
               v-if="it.course.length > 0"
             >
@@ -82,11 +81,6 @@
               <br />
               <span>{{ it.course[0].addr }}</span>
             </div>
-            <!-- <div v-else-if="">
-              <span class="mb-1">{{ it.course[0].name }}</span>
-              <br />
-              <span>{{ it.course[0].addr }}</span>
-            </div> -->
             <div v-else></div>
           </div>
         </div>
@@ -180,7 +174,8 @@ export default {
     },
 
     weekChange (e) {
-      this.setNavigationBarTitle(+e.mp.detail.value + 1)
+      this.currentWeek = +e.mp.detail.value + 1
+      this.setNavigationBarTitle(this.currentWeek)
       this.active = false
     },
 
