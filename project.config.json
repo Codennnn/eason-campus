@@ -45,7 +45,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -100,6 +100,14 @@
 					"id": -1,
 					"name": "关于本程序",
 					"pathName": "pages/about/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "平时成绩",
+					"pathName": "pages/usual-grade/main",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "平时成绩"
+  "navigationBarTitleText": "平时成绩",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
 }
