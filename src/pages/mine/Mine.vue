@@ -322,6 +322,7 @@ export default {
 
 .mask-modal__img {
   width: 100%;
+  display: block;
 }
 .mask-modal__text {
   text-align: justify;

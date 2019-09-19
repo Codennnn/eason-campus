@@ -142,6 +142,7 @@ export default {
 
     schedule () {
       if (this.logged && this.currentWeek) {
+        this.active = false
         return this.getCurrentSchedule(this.currentWeek)
       }
       return []
@@ -176,7 +177,6 @@ export default {
     weekChange (e) {
       this.currentWeek = +e.mp.detail.value + 1
       this.setNavigationBarTitle(this.currentWeek)
-      this.active = false
     },
 
     setCurrentSchedule () {

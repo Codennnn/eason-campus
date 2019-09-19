@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="main bg-white">
   </div>
 </template>
 
@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style scoped>
+.main {
+  height: 100vh;
+}
 </style>

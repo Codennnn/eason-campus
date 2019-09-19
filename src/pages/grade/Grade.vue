@@ -54,7 +54,7 @@
                       v-for="(item, key) in currentGrades"
                       :key="key"
                     >
-                      <span>{{ item.name }}</span>
+                      <span class="name">{{ item.name }}</span>
                       <span class="gray">{{ item.score }}</span>
                     </div>
                   </template>
@@ -116,7 +116,7 @@
                       v-for="(item, i) in card"
                       :key="i"
                     >
-                      <span class="">{{ item.name }}</span>
+                      <span class="name">{{ item.name }}</span>
                       <span class="gray">{{ item.score }}</span>
                     </div>
                   </div>
@@ -314,9 +314,17 @@ export default {
   background: white;
   font-size: 27rpx;
 }
-
-.content .item {
-  padding: 5rpx 0;
+.item {
+  padding: 10rpx 0;
+}
+.item:active {
+  border-radius: 10rpx;
+  background: #ececec;
+}
+.name {
+  width: 70%;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .btn {

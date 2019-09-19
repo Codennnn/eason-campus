@@ -162,9 +162,9 @@ export default {
       blocks,
       sections,
       days,
-      currentWeek: 1,
-      currentDate: '',
-      currentDay: 0,
+      currentWeek: null,
+      currentDate: null,
+      currentDay: null,
       schedules: []
     }
   },
@@ -179,7 +179,7 @@ export default {
   computed: {
     logged () {
       const logged = this.$store.state.logged
-      if (logged) {
+      if (logged && this.currentDay) {
         this.setSchedule()
       }
       return logged
@@ -190,7 +190,7 @@ export default {
     setSchedule () {
       const schedules = []
 
-      const day = this.currentDay
+      const day = this.currentDay - 1
       const week = this.currentWeek
       const periods = [
         '09:00 - 10:20',
