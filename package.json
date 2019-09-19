@@ -2,7 +2,7 @@
   "name": "mpvue-hr",
   "version": "1.0.0",
   "mpvueTemplateProjectVersion": "0.1.0",
-  "description": "A Mpvue project",
+  "description": "意想课表",
   "author": "令狐少侠 <czc12580520@gmail.com>",
   "private": true,
   "scripts": {

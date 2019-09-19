@@ -9,7 +9,7 @@
 		"newFeature": true,
 		"coverView": true,
 		"nodeModules": true,
-		"autoAudits": true,
+		"autoAudits": false,
 		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
