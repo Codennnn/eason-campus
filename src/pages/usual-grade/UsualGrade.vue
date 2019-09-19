@@ -11,7 +11,7 @@
           :key="key"
         >
           <div
-            class="flex align-center justify-between mt-1 p-1"
+            class="flex align-center justify-between mt-2 p-1"
             @click="showItems(key)"
           >
             <div>{{ item.name }}</div>

@@ -1,106 +1,121 @@
 <template>
   <div class="main">
-    <div
-      class="hidden-bar flex align-center justify-around bg-white"
-      :class="active ? 'show' : 'hide'"
-    >
-      <picker
-        style="flex: 1;"
-        @change="weekChange"
-        :value="index"
-        :range="weeks"
+    <div class="blur">
+      <div
+        class="hidden-bar flex align-center justify-around bg-white"
+        :class="active ? 'show' : 'hide'"
       >
+        <picker
+          style="flex: 1;"
+          @change="weekChange"
+          :value="index"
+          :range="weeks"
+        >
+          <i
+            class="iconfont icon-group"
+            data-label="选择周数"
+          ></i>
+        </picker>
         <i
-          class="iconfont icon-group"
-          data-label="选择周数"
+          class="iconfont icon-done"
+          data-label="当前周"
+          @click="setCurrentSchedule"
         ></i>
-      </picker>
-      <i
-        class="iconfont icon-done"
-        data-label="当前周"
-        @click="setCurrentSchedule"
-      ></i>
-      <i
-        class="iconfont icon-calendar"
-        data-label="全学期"
-        @click="setAllSchedule"
-      ></i>
-    </div>
-    <div class="day-bar grid bg-white">
-      <template v-if="logged">
-        <div
-          class="line-group week flex flex-column align-center justify-center py-2"
-          @click="active = !active"
-        >
-          <div
-            class="line"
-            :class=" active ? 'line-one-active' : ''"
-          ></div>
-          <div
-            class="line"
-            :class=" active ? 'line-two-active' : ''"
-          ></div>
-          <div
-            class="line"
-            :class=" active ? 'line-three-active' : ''"
-          ></div>
-        </div>
-        <div
-          class="week py-2"
-          v-for="(day, i) in days"
-          :key="i"
-        >
-          {{ day }}
-        </div>
-      </template>
-    </div>
+        <i
+          class="iconfont icon-calendar"
+          data-label="全学期"
+          @click="setAllSchedule"
+        ></i>
+      </div>
 
-    <div class="content py-1">
-      <template v-if="logged && currentWeek">
-        <div
-          class="grid courses"
-          v-for="(item, i) in schedule"
-          :key="i"
-        >
-          <!-- 时间段 -->
-          <div class="period flex align-center justify-center p-3">
-            {{ periods[i] }}
-          </div>
-          <!-- 课程内容 -->
+      <div class="day-bar grid bg-white">
+        <template v-if="logged">
           <div
-            class="course flex align-center justify-center"
-            v-for="(it, key) in item"
-            :key="key"
+            class="line-group week flex flex-column align-center justify-center py-2"
+            @click="active = !active"
           >
             <div
-              class="course-content flex flex-column align-center justify-center"
-              :style="currentDay === key + 1 ? 'background: #5d97f7' : ''"
-              v-if="it.course.length > 0"
-            >
-              <span class="mb-1">{{ it.course[0].name }}</span>
-              <br />
-              <span>{{ it.course[0].addr }}</span>
-            </div>
-            <div v-else></div>
+              class="line"
+              :class=" active ? 'line-one-active' : ''"
+            ></div>
+            <div
+              class="line"
+              :class=" active ? 'line-two-active' : ''"
+            ></div>
+            <div
+              class="line"
+              :class=" active ? 'line-three-active' : ''"
+            ></div>
           </div>
-        </div>
-      </template>
+          <div
+            class="week py-2"
+            v-for="(day, i) in days"
+            :key="i"
+          >
+            {{ day }}
+          </div>
+        </template>
+      </div>
 
-      <!-- 前往登录 -->
-      <div
-        class="to-login flex flex-column align-center justify-center"
-        v-if="!logged"
-      >
-        <image
-          class="to-login__icon"
-          src="/static/images/img-tip.svg"
-          mode="widthFix"
-        />
-        <div class="gray m-3">登录后查看课表</div>
-        <navigator
-          class="to-login__btn bg-primary"
-          url="../login/main"
-        >前往登录</navigator>
+      <div class="content py-1">
+        <template v-if="logged && currentWeek">
+          <div
+            class="grid courses"
+            v-for="(item, i) in schedule"
+            :key="i"
+          >
+            <!-- 时间段 -->
+            <div class="period flex align-center justify-center p-3">
+              {{ periods[i] }}
+            </div>
+            <!-- 课程内容 -->
+            <div
+              class="course flex align-center justify-center"
+              v-for="(it, key) in item"
+              :key="key"
+            >
+              <div
+                class="course-content flex flex-column align-center justify-center"
+                :style="currentDay === key + 1 ? 'background: #5d97f7' : ''"
+                v-if="it.course.length > 0"
+              >
+                <span class="mb-1">{{ it.course[0].name }}</span>
+                <br />
+                <span>{{ it.course[0].addr }}</span>
+              </div>
+              <div v-else></div>
+            </div>
+          </div>
+        </template>
+
+        <!-- 前往登录 -->
+        <div
+          class="to-login flex flex-column align-center justify-center"
+          v-if="!logged"
+        >
+          <image
+            class="to-login__icon"
+            src="/static/images/img-tip.svg"
+            mode="widthFix"
+          />
+          <div class="gray m-3">登录后查看课表</div>
+          <navigator
+            class="to-login__btn bg-primary"
+            url="../login/main"
+          >前往登录</navigator>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="modal-header">
+        <i
+          class="iconfont icon-clear"
+          style="font-size: 34rpx;font-weight: bold;"
+        ></i>
+      </div>
+      <div class="modal-content p-3">
+        123
       </div>
     </div>
   </div>
@@ -195,6 +210,7 @@ export default {
 
 <style>
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -331,5 +347,31 @@ export default {
   border-radius: 35rpx;
   color: white;
   text-align: center;
+}
+
+.blur {
+  filter: blur(3rpx);
+}
+
+.modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 250rpx;
+  background: #fff;
+  overflow: hidden;
+}
+.modal-header {
+  padding: 20rpx;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+  color: white;
+  font-size: 32rpx;
+  background: rgba(93, 151, 247);
+  overflow: hidden;
+}
+.modal-content {
 }
 </style>

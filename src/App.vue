@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-@import "../static/iconfont/iconfont.css";
+@import "./styles/iconfont/iconfont.css";
 @import "./styles/common.css";
 @import "./styles/distance.css";
 
