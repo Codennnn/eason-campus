@@ -74,7 +74,7 @@
           >
             <div
               class="course-content flex flex-column align-center justify-center"
-              :style="currentDay === key ? 'background: #5d97f7' : ''"
+              :style="currentDay === key + 1 ? 'background: #5d97f7' : ''"
               v-if="it.course.length > 0"
             >
               <span class="mb-1">{{ it.course[0].name }}</span>

@@ -24,21 +24,13 @@
         :key="index"
         class="log-item"
       >
-        <card :text="(index + 1) + ' . ' + log"></card>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
-import card from '@/components/card'
-
 export default {
-  components: {
-    card
-  },
-
   data () {
     return {
       logs: [],
@@ -48,16 +40,6 @@ export default {
         'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870'
       ]
     }
-  },
-
-  created () {
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-    }
-    this.logs = logs.map(log => formatTime(new Date(log)))
   }
 }
 </script>

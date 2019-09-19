@@ -48,18 +48,18 @@
         >
           <template v-if="schedules.length > 0">
             <div
-              class="schedule-item flex align-center justify-between mb-1"
+              class="schedule-item flex align-center justify-between mb-1 gray"
               v-for="(item, key) in schedules"
               :key="key"
             >
-              <span class="gray">{{ item.period }}</span>
-              <span>{{ item.name }}</span>
+              <span>{{ item.period }}</span>
+              <span class="name">{{ item.name }}</span>
             </div>
           </template>
           <!-- 周末愉快 -->
           <div
             class="to-login text-center"
-            v-else-if="currentDay === 5 || currentDay === 6"
+            v-else-if="currentDay === 0 || currentDay === 6"
           >
             <image
               class="to-login__icon mb-2"
@@ -154,7 +154,7 @@ const sections = [
     url: ''
   }
 ]
-const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+const days = [ '周日', '周一', '周二', '周三', '周四', '周五', '周六' ]
 
 export default {
   data () {
@@ -202,7 +202,6 @@ export default {
         '19:00 - 20:20',
         '20:30 - 21:50'
       ]
-      console.log(day)
 
       mpvue.getStorageSync('schedule').forEach((item, i) => {
         const course = item[day].course
@@ -270,6 +269,13 @@ export default {
   background: white;
   box-shadow: 0 0 20rpx #ececec;
   border-radius: 20rpx;
+}
+
+.name {
+  width: 60%;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .block:active {
