@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "考勤信息"
+  "navigationBarTitleText": "考勤信息",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
 }

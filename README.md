@@ -10,7 +10,7 @@
 🔧 修改配置
 🛠️ 修复BUG
 
-[符号大全](https://twemoji.maxcdn.com/2/test/preview.html)
+更多符号请看：[符号大全](https://twemoji.maxcdn.com/2/test/preview.html)
 
 
 ## 项目运行
