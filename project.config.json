@@ -1,15 +1,15 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
 		"nodeModules": true,
-		"autoAudits": false,
+		"autoAudits": true,
 		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
@@ -26,7 +26,7 @@
 	"projectname": "mpvue-hr",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"libVersion": "2.8.2",
+	"libVersion": "2.8.3",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -45,7 +45,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -108,6 +108,12 @@
 					"name": "平时成绩",
 					"pathName": "pages/usual-grade/main",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "考勤",
+					"pathName": "pages/attendance/main",
 					"scene": null
 				}
 			]

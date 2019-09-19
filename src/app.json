@@ -7,9 +7,11 @@
     "pages/grade/main",
     "pages/protocol/main",
     "pages/user-info/main",
+    "pages/attendance/main",
     "pages/exam-time/main",
     "pages/usual-grade/main",
     "pages/calendar/main",
+    "pages/more/main",
     "pages/about/main"
   ],
   "window": {
