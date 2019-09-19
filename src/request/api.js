@@ -1,40 +1,47 @@
 import request from './request'
 
-const host = 'http://localhost:7001'
+// 测试环境
+// const host = 'http://localhost:7001'
+// 线上环境
+const host = 'https://hrspider.top'
 
 // 登录
-export async function login (data) {
-  const res = await request.post(`${host}/login`, data)
-  return res
+export function login (data) {
+  return request.post(`${host}/login`, data)
 }
 
 // 学生信息
-export async function getStudentInfo (data) {
-  const res = await request.post(`${host}/info`, data)
-  return res
+export function getStudentInfo (data) {
+  return request.post(`${host}/info`, data)
 }
 
 // 课表信息
-export async function getSchedule (data) {
-  const res = await request.post(`${host}/schedule`, data)
-  return res
+export function getSchedule (data) {
+  return request.post(`${host}/schedule`, data)
 }
 
 // 当前学期的成绩
-export async function getCurrentGrades (data) {
+export function getCurrentGrades (data) {
   data.current_term = '2019年第一学期'
-  const res = await request.post(`${host}/current-grades`, data)
-  return res
+  return request.post(`${host}/current-grade`, data)
 }
 
 // 全部学期的成绩
-export async function getAllGrades (data) {
-  const res = await request.post(`${host}/all-grades`, data)
-  return res
+export function getAllGrades (data) {
+  return request.post(`${host}/all-grades`, data)
+}
+
+// 考试时间
+export function getExamTime (data) {
+  return request.post(`${host}/exam-time`, data)
+}
+
+// 考勤信息
+export function getAttendance (data) {
+  return request.post(`${host}/attendance`, data)
 }
 
 // 平时成绩
-export async function getUsualGrades (data) {
-  const res = await request.post(`${host}/usual-grades`, data)
-  return res
+export function getUsualGrades (data) {
+  return request.post(`${host}/usual-grades`, data)
 }

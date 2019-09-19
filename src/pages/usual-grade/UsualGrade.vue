@@ -77,6 +77,8 @@ export default {
         const { code, data } = await getUsualGrades(account)
         if (code === 1000) {
           this.itmes = data.usual_grades
+        } else {
+          throw new Error()
         }
       } catch (err) {
         const that = this
@@ -136,12 +138,10 @@ export default {
 }
 
 .show {
-  opacity: 1;
   height: auto;
 }
 
 .hide {
-  opacity: 0;
   height: 0;
 }
 </style>

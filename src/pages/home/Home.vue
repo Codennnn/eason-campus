@@ -124,7 +124,7 @@ const blocks = [
   {
     label: '考勤',
     icon: '/static/icons/icon-attendance.png',
-    url: '../grade/main'
+    url: '../attendance/main'
   },
   {
     label: '考试',
@@ -146,12 +146,12 @@ const sections = [
   {
     label: '待开发',
     icon: '/static/icons/icon-tag.png',
-    url: '../usual-grade/main'
+    url: ''
   },
   {
     label: '待开发',
     icon: '/static/icons/icon-flash.png',
-    url: '../usual-grade/main'
+    url: ''
   }
 ]
 const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
@@ -221,7 +221,9 @@ export default {
 
     routerTo (url) {
       if (this.logged) {
-        mpvue.navigateTo({ url })
+        if (url.length > 0) {
+          mpvue.navigateTo({ url })
+        }
       } else {
         mpvue.showModal({
           content: '您还没有绑定 Myscse 账号哦',
@@ -270,7 +272,7 @@ export default {
   border-radius: 20rpx;
 }
 
-.block:hover {
+.block:active {
   background: rgba(0, 0, 0, 0.1);
 }
 
@@ -279,7 +281,7 @@ export default {
   height: 100rpx;
 }
 
-.section:hover {
+.section:active {
   background: rgba(0, 0, 0, 0.1);
 }
 
