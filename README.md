@@ -14,7 +14,7 @@
 
 
 ## 界面展示
-![首页](https://gitee.com/chinesee/images/raw/master/img/img_004.jpg)![课表页](https://gitee.com/chinesee/images/raw/master/img/img_005.jpg)![个人中心](https://gitee.com/chinesee/images/raw/master/img/img_006.jpg)![登录页](https://gitee.com/chinesee/images/raw/master/img/img_007.jpg)
+<img src="https://gitee.com/chinesee/images/raw/master/img/img_004.jpg" width="22%" style="margin-right: 10px;"  alt="首页"><img src="https://gitee.com/chinesee/images/raw/master/img/img_005.jpg" width="22%"style="margin-right: 10px;" alt="课表页"><img src="https://gitee.com/chinesee/images/raw/master/img/img_006.jpg" width="22%"style="margin-right: 10px;" alt="首页" ><img src="https://gitee.com/chinesee/images/raw/master/img/img_007.jpg" width="22%"style="margin-right: 10px;" alt="登录页" >
 
 
 ## 项目运行
