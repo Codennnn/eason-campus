@@ -14,7 +14,10 @@
 
 
 ## 界面展示
-<img src="https://gitee.com/chinesee/images/raw/master/img/img_004.jpg" width="22%" style="margin-right: 20px;"  alt="首页" align=center>
+<div align="center">
+<img src="https://gitee.com/chinesee/images/raw/master/img/img_004.jpg" width="22%" style="margin-right: 20px;"  alt="首页">
+</div>
+
 
 
 ## 项目运行
