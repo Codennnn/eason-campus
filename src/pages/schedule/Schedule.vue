@@ -1,6 +1,9 @@
 <template>
   <div class="main">
-    <div class="blur">
+    <div
+      class="wrapper"
+      :class="display ? 'blur' : ''"
+    >
       <div
         class="hidden-bar flex align-center justify-around bg-white"
         :class="active ? 'show' : 'hide'"
@@ -78,6 +81,7 @@
                 class="course-content flex flex-column align-center justify-center"
                 :style="currentDay === key + 1 ? 'background: #5d97f7' : ''"
                 v-if="it.course.length > 0"
+                @click="showDetail(it.course[0])"
               >
                 <span class="mb-1">{{ it.course[0].name }}</span>
                 <br />
@@ -107,20 +111,82 @@
       </div>
     </div>
 
-    <div class="modal">
+    <div
+      class="modal"
+      :class="display ? 'modal-display' : 'modal-hidden'"
+    >
       <div class="modal-header">
         <i
-          class="iconfont icon-clear"
+          class="iconfont icon-clear mr-2"
           style="font-size: 34rpx;font-weight: bold;"
+          @click="display = false"
         ></i>
       </div>
+
       <div class="modal-content p-3">
-        123
+        <div class="flex align-center mb-2">
+          <image
+            class="modal-icon mr-1"
+            src="/static/images/name.svg"
+            mode="widthFix"
+          />
+          <span>课程名称</span>
+          <span class="gray ml-1">{{ detail.name }}</span>
+        </div>
+        <div class="modal-grid">
+          <div class="flex align-center mb-2">
+            <image
+              class="modal-icon mr-1"
+              src="/static/images/teacher.svg"
+              mode="widthFix"
+            />
+            <span>任课老师</span>
+            <span class="gray ml-1">{{ detail.teacher }}</span>
+          </div>
+          <div class="flex align-center mb-2">
+            <image
+              class="modal-icon mr-1"
+              src="/static/images/map.svg"
+              mode="widthFix"
+            />
+            <span>课室地点</span>
+            <span class="gray ml-1">{{ detail.addr }}</span>
+          </div>
+          <div class="flex align-center mb-2">
+            <image
+              class="modal-icon mr-1"
+              src="/static/images/3D-chart.svg"
+              mode="widthFix"
+            />
+            <span>课程代码</span>
+            <span class="gray ml-1">{{ detail.code }}</span>
+          </div>
+          <div class="flex align-center mb-2">
+            <image
+              class="modal-icon mr-1"
+              src="/static/images/pie-chart.svg"
+              mode="widthFix"
+            />
+            <span>上课周数</span>
+            <span
+              class="gray ml-1"
+              v-if="detail.weeks && detail.weeks.length > 1"
+            >
+              {{ detail.weeks[0] }}-{{ detail.weeks[detail.weeks.length - 1] }}周
+            </span>
+            <span
+              v-else
+              class="gray ml-1"
+            >
+              {{ detail.weeks[0] }}周
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
+ 
 <script>
 export default {
   data () {
@@ -137,6 +203,14 @@ export default {
         '19:00 - 20:20',
         '20:30 - 21:50'
       ],
+      display: false, // 是否显示课程详细信息
+      detail: {
+        name: '--',
+        teacher: '--',
+        addr: '--',
+        code: '--',
+        weeks: [1]
+      }, // 课程详细信息
       days: ['周一', '周二', '周三', '周四', '周五'],
       weeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
       active: false
@@ -203,6 +277,11 @@ export default {
     setAllSchedule () {
       this.currentWeek = 19
       mpvue.setNavigationBarTitle({ title: '全学期课表' })
+    },
+
+    showDetail (v) {
+      this.display = true
+      this.detail = v
     }
   }
 }
@@ -211,6 +290,9 @@ export default {
 <style>
 .main {
   position: relative;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -272,7 +354,7 @@ export default {
 .line-one-active {
   width: 38rpx;
   transform-origin: 8%;
-  transform: rotateZ(45deg);
+  transform: rotate3d(0, 0, 1, 45deg);
 }
 .line-two-active {
   opacity: 0;
@@ -280,7 +362,7 @@ export default {
 .line-three-active {
   width: 38rpx;
   transform-origin: 8%;
-  transform: rotateZ(-45deg);
+  transform: rotate3d(0, 0, 1, -45deg);
 }
 
 .content {
@@ -353,25 +435,41 @@ export default {
   filter: blur(3rpx);
 }
 
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .modal {
   position: fixed;
   z-index: 9999;
   left: 0;
   bottom: 0;
   width: 100vw;
-  height: 250rpx;
   background: #fff;
   overflow: hidden;
+  transition: all 0.3s;
+}
+.modal-display {
+  transform: translate3d(0, 0, 0);
+}
+.modal-hidden {
+  transform: translate3d(0, 100%, 0);
 }
 .modal-header {
   padding: 20rpx;
-  border-top-left-radius: 15rpx;
-  border-top-right-radius: 15rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  text-align: right;
   color: white;
   font-size: 32rpx;
   background: rgba(93, 151, 247);
   overflow: hidden;
 }
 .modal-content {
+  font-size: 26rpx;
+}
+.modal-icon {
+  width: 45rpx;
 }
 </style>
