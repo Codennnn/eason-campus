@@ -116,16 +116,19 @@
       :class="display ? 'modal-display' : 'modal-hidden'"
     >
       <div class="modal-header">
-        <div class="flex align-center">
+        <div
+          class="flex align-center"
+          style="overflow: hidden;"
+        >
           <i
             class="iconfont icon-clear mr-2 p-2"
-            style="flex: 0;margin-left: auto;font-size: 34rpx;font-weight: bold;"
+            style="flex: 0;margin-left: auto;font-weight: bold;"
             @click="display = false"
           ></i>
         </div>
       </div>
 
-      <div class="modal-content p-3">
+      <div class="modal-content">
         <div class="flex align-center mb-2">
           <image
             class="modal-icon mr-1"
@@ -289,7 +292,8 @@ export default {
 
   onShareAppMessage () {
     return {
-      path: '/pages/schedule/Schedule.vue'
+      title: '课表信息',
+      path: '/pages/schedule/main'
     }
   }
 }
@@ -454,6 +458,7 @@ export default {
   left: 0;
   bottom: 0;
   width: 100vw;
+  font-size: 30rpx;
   background: #fff;
   overflow: hidden;
   transition: all 0.3s;
@@ -469,14 +474,14 @@ export default {
   border-top-right-radius: 20rpx;
   text-align: right;
   color: white;
-  font-size: 32rpx;
+  font-size: 45rpx;
   background: rgba(93, 151, 247);
   overflow: hidden;
 }
 .modal-content {
-  font-size: 26rpx;
+  padding: 75rpx 35rpx;
 }
 .modal-icon {
-  width: 45rpx;
+  width: 55rpx;
 }
 </style>

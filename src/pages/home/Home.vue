@@ -241,7 +241,8 @@ export default {
 
   onShareAppMessage () {
     return {
-      path: '/pages/home/Home.vue'
+      title: '首页',
+      path: '/pages/home/main'
     }
   }
 }

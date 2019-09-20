@@ -146,9 +146,9 @@ const sections = [
 ]
 const cells = [
   {
-    title: '待开发功能',
+    title: '个人信息',
     icon: 'icon-block',
-    url: '../../main'
+    url: '../user-info/main'
   },
   {
     title: '关于本程序',
@@ -220,7 +220,8 @@ export default {
 
   onShareAppMessage () {
     return {
-      path: '/pages/mine/Mine.vue'
+      title: '个人中心',
+      path: '/pages/mine/main'
     }
   }
 }

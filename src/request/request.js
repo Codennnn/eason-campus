@@ -25,7 +25,6 @@ const request = {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success (res) {
-          console.log(res.data)
           resolve(res.data)
         },
         fail (error) {

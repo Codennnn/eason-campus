@@ -13,8 +13,6 @@
 
 <script>
 export default {
-  name: 'user-info',
-
   data () {
     return {
       info: []
@@ -30,5 +28,6 @@ export default {
 <style scoped>
 .main {
   height: 100vh;
+  background: white;
 }
 </style>
