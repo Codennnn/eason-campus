@@ -15,10 +15,10 @@
 
 ## 界面展示
 <div align="center">
-<img src="https://gitee.com/chinesee/images/raw/master/img/img_004.jpg" width="25%" alt="首页">
-<img src="https://gitee.com/chinesee/images/raw/master/img/img_005.jpg" width="25%" alt="课表页">
-<img src="https://gitee.com/chinesee/images/raw/master/img/img_006.jpg" width="25%" alt="个人中心页" >
-<img src="https://gitee.com/chinesee/images/raw/master/img/img_007.jpg" width="25%" alt="登录页" >
+<img src="https://gitee.com/chinesee/images/raw/master/img/img_004.jpg" width="22%" style="margin:0 10px;" alt="首页">
+<img src="https://gitee.com/chinesee/images/raw/master/img/img_005.jpg" width="22%" style="margin:0 10px;" alt="课表页">
+<img src="https://gitee.com/chinesee/images/raw/master/img/img_006.jpg" width="22%" style="margin:0 10px;" alt="个人中心页" >
+<img src="https://gitee.com/chinesee/images/raw/master/img/img_007.jpg" width="22%" style="margin:0 10px;" alt="登录页" >
 </div>
 
 
