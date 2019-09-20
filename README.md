@@ -13,6 +13,10 @@
 更多符号请看：[符号大全](https://twemoji.maxcdn.com/2/test/preview.html)
 
 
+## 界面展示
+![img](https://gitee.com/chinesee/images/blob/master/img/img_004.png)![img](https://gitee.com/chinesee/images/blob/master/img/img_005.png)![img](https://gitee.com/chinesee/images/blob/master/img/img_006.png)![img](https://gitee.com/chinesee/images/blob/master/img/img_007.png)
+
+
 ## 项目运行
 ``` bash
 # 安装依赖
