@@ -45,7 +45,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -114,6 +114,20 @@
 					"id": -1,
 					"name": "考勤",
 					"pathName": "pages/attendance/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "考试时间",
+					"pathName": "pages/exam-time/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "更多信息",
+					"pathName": "pages/more/main",
 					"scene": null
 				}
 			]

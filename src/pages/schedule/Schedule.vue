@@ -116,11 +116,13 @@
       :class="display ? 'modal-display' : 'modal-hidden'"
     >
       <div class="modal-header">
-        <i
-          class="iconfont icon-clear mr-2"
-          style="font-size: 34rpx;font-weight: bold;"
-          @click="display = false"
-        ></i>
+        <div class="flex align-center">
+          <i
+            class="iconfont icon-clear mr-2 p-2"
+            style="flex: 0;margin-left: auto;font-size: 34rpx;font-weight: bold;"
+            @click="display = false"
+          ></i>
+        </div>
       </div>
 
       <div class="modal-content p-3">
@@ -131,7 +133,7 @@
             mode="widthFix"
           />
           <span>课程名称</span>
-          <span class="gray ml-1">{{ detail.name }}</span>
+          <span class="gray ml-2">{{ detail.name }}</span>
         </div>
         <div class="modal-grid">
           <div class="flex align-center mb-2">
@@ -141,7 +143,7 @@
               mode="widthFix"
             />
             <span>任课老师</span>
-            <span class="gray ml-1">{{ detail.teacher }}</span>
+            <span class="gray ml-2">{{ detail.teacher }}</span>
           </div>
           <div class="flex align-center mb-2">
             <image
@@ -150,7 +152,7 @@
               mode="widthFix"
             />
             <span>课室地点</span>
-            <span class="gray ml-1">{{ detail.addr }}</span>
+            <span class="gray ml-2">{{ detail.addr }}</span>
           </div>
           <div class="flex align-center mb-2">
             <image
@@ -159,7 +161,7 @@
               mode="widthFix"
             />
             <span>课程代码</span>
-            <span class="gray ml-1">{{ detail.code }}</span>
+            <span class="gray ml-2">{{ detail.code }}</span>
           </div>
           <div class="flex align-center mb-2">
             <image
@@ -169,14 +171,14 @@
             />
             <span>上课周数</span>
             <span
-              class="gray ml-1"
+              class="gray ml-2"
               v-if="detail.weeks && detail.weeks.length > 1"
             >
               {{ detail.weeks[0] }}-{{ detail.weeks[detail.weeks.length - 1] }}周
             </span>
             <span
               v-else
-              class="gray ml-1"
+              class="gray ml-2"
             >
               {{ detail.weeks[0] }}周
             </span>
@@ -282,6 +284,12 @@ export default {
     showDetail (v) {
       this.display = true
       this.detail = v
+    }
+  },
+
+  onShareAppMessage () {
+    return {
+      path: '/pages/schedule/Schedule.vue'
     }
   }
 }
@@ -457,7 +465,6 @@ export default {
   transform: translate3d(0, 100%, 0);
 }
 .modal-header {
-  padding: 20rpx;
   border-top-left-radius: 20rpx;
   border-top-right-radius: 20rpx;
   text-align: right;

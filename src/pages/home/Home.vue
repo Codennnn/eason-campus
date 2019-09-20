@@ -154,7 +154,7 @@ const sections = [
     url: ''
   }
 ]
-const days = [ '周日', '周一', '周二', '周三', '周四', '周五', '周六' ]
+const days = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 
 export default {
   data () {
@@ -235,6 +235,13 @@ export default {
           }
         })
       }
+    }
+
+  },
+
+  onShareAppMessage () {
+    return {
+      path: '/pages/home/Home.vue'
     }
   }
 }

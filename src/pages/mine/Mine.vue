@@ -216,8 +216,13 @@ export default {
       this.$store.commit('logout')
       mpvue.navigateTo({ url: '../login/main' })
     }
-  }
+  },
 
+  onShareAppMessage () {
+    return {
+      path: '/pages/mine/Mine.vue'
+    }
+  }
 }
 </script>
 
