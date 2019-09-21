@@ -69,6 +69,14 @@
 
     <!-- 单元格 -->
     <div class="cell-group mb-2 bg-white">
+      <div
+        class="cell flex align-center p-3"
+        @click="toMiniProgram"
+      >
+        <i class="iconfont icon-block cell-icon ml-1 mr-3"></i>
+        <div>前往意想社团</div>
+        <i class="iconfont icon-arrow"></i>
+      </div>
       <navigator
         class="cell flex align-center p-3"
         v-for="(cell, key) in cells"
@@ -145,11 +153,11 @@ const sections = [
   }
 ]
 const cells = [
-  {
-    title: '个人信息',
-    icon: 'icon-block',
-    url: '../user-info/main'
-  },
+  // {
+  //   title: '个人信息',
+  //   icon: 'icon-block',
+  //   url: '../user-info/main'
+  // },
   {
     title: '关于本程序',
     icon: 'icon-code',
@@ -209,6 +217,12 @@ export default {
           }
         })
       }
+    },
+
+    toMiniProgram () {
+      mpvue.navigateToMiniProgram({
+        appId: 'wx7a674884ec88d424'
+      })
     },
 
     logout () {
