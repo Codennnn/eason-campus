@@ -460,6 +460,8 @@ export default {
   width: 100vw;
   font-size: 30rpx;
   background: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -470,13 +472,10 @@ export default {
   transform: translate3d(0, 100%, 0);
 }
 .modal-header {
-  border-top-left-radius: 20rpx;
-  border-top-right-radius: 20rpx;
   text-align: right;
   color: white;
   font-size: 45rpx;
   background: rgba(93, 151, 247);
-  overflow: hidden;
 }
 .modal-content {
   padding: 75rpx 35rpx;
