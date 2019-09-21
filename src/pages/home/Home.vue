@@ -59,7 +59,7 @@
           <!-- 周末愉快 -->
           <div
             class="to-login text-center"
-            v-else-if="currentDay === 0 || currentDay === 6"
+            v-else-if="isWeekend"
           >
             <image
               class="to-login__icon mb-2"
@@ -165,32 +165,37 @@ export default {
       currentWeek: null,
       currentDate: null,
       currentDay: null,
+      // isWeekend: false,
       schedules: []
     }
   },
 
-  mounted () {
-    const state = this.$store.state
-    this.currentWeek = state.currentWeek
-    this.currentDate = state.currentDate
-    this.currentDay = state.currentDay
+  created () {
+    ;({
+      currentWeek: this.currentWeek,
+      currentDate: this.currentDate,
+      currentDay: this.currentDay
+    } = this.$store.state)
   },
 
   computed: {
+    isWeekend () {
+      return [0, 6].includes(this.currentDay)
+    },
+
     logged () {
       const logged = this.$store.state.logged
-      if (logged && this.currentDay) {
-        this.setSchedule()
+      if (logged && !this.isWeekend) {
+        this.setSchedule(this.currentDay - 1)
       }
-      return logged
+      return false
     }
   },
 
   methods: {
-    setSchedule () {
+    setSchedule (day) {
       const schedules = []
 
-      const day = this.currentDay - 1
       const week = this.currentWeek
       const periods = [
         '09:00 - 10:20',
@@ -236,7 +241,6 @@ export default {
         })
       }
     }
-
   },
 
   onShareAppMessage () {
