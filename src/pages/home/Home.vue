@@ -186,17 +186,16 @@ export default {
     logged () {
       const logged = this.$store.state.logged
       if (logged && !this.isWeekend) {
-        this.setSchedule(this.currentDay - 1)
+        this.setSchedule(this.currentDay - 1, this.currentWeek)
       }
-      return false
+      return logged // 返回登录状态
     }
   },
 
   methods: {
-    setSchedule (day) {
+    setSchedule (day, week) {
       const schedules = []
 
-      const week = this.currentWeek
       const periods = [
         '09:00 - 10:20',
         '10:40 - 12:00',
