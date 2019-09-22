@@ -170,7 +170,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     ;({
       currentWeek: this.currentWeek,
       currentDate: this.currentDate,
@@ -185,7 +185,8 @@ export default {
 
     logged () {
       const logged = this.$store.state.logged
-      if (logged && !this.isWeekend) {
+      console.log(logged, this.isWeekend)
+      if (logged && this.currentDay && !this.isWeekend) {
         this.setSchedule(this.currentDay - 1, this.currentWeek)
       }
       return logged // 返回登录状态

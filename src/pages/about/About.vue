@@ -7,7 +7,7 @@
         mode="widthFix"
       />
       <div class="py-2">
-        <span class="primary">v1.5.0</span>
+        <span class="primary">v2.0.1</span>
         <spanc class="beta">beta</spanc>
       </div>
     </div>
