@@ -185,7 +185,6 @@ export default {
 
     logged () {
       const logged = this.$store.state.logged
-      console.log(logged, this.isWeekend)
       if (logged && this.currentDay && !this.isWeekend) {
         this.setSchedule(this.currentDay - 1, this.currentWeek)
       }
