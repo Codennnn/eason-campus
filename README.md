@@ -16,7 +16,7 @@
 <img src="https://gitee.com/chinesee/images/raw/master/img/img_006.jpg" width="22%" style="margin:0 10px;" alt="个人中心页" >
 <img src="https://gitee.com/chinesee/images/raw/master/img/img_007.jpg" width="22%" style="margin:0 10px;" alt="登录页" >
 </div>
-
+1
 
 
 ## 项目运行
