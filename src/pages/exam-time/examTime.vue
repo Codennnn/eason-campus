@@ -26,7 +26,7 @@ export default {
     }
   },
 
-  mounted () {
+  created () {
     this.getExamTime()
   },
 
