@@ -1,50 +1,52 @@
 <template>
   <div class="main">
-    <div class="card bg-white">
-      <div class="flex align-center justify-between">
-        <div>课程名称</div>
-        <div>分数</div>
-      </div>
-      <template v-if="!loading && itmes.length > 0">
-        <div
-          v-for="(item, key) in itmes"
-          :key="key"
-        >
-          <div
-            class="flex align-center justify-between mt-2 p-1"
-            @click="showItems(key)"
-          >
-            <div>{{ item.name }}</div>
-            <div
-              class="primary"
-              style="font-weight: bold;font-size: 28rpx;"
-            >{{ item.total || '--' }}</div>
-          </div>
-          <div
-            class="items"
-            style="border-radius: 10rpx;background: #ececec;"
-            :class="currentShow === key ? 'show my-1 p-2' : 'hide'"
-          >
-            <template v-if="currentShow === key">
-              <div
-                class="grid text-center"
-                v-for="(it, i) in item.items"
-                :key="i"
-              >
-                <span class="label">{{ it.label }}</span>
-                <span>{{ it.percentage }}</span>
-                <span>{{ it.most }}</span>
-                <span>{{ it.score }}</span>
-              </div>
-            </template>
-          </div>
+    <div class="p-4">
+      <div class="card bg-white">
+        <div class="flex align-center justify-between">
+          <div>课程名称</div>
+          <div>分数</div>
         </div>
-      </template>
-      <div
-        style="height: 500rpx;"
-        v-if="loading"
-      >
-        <LoaderCircle />
+        <template v-if="!loading && itmes.length > 0">
+          <div
+            v-for="(item, key) in itmes"
+            :key="key"
+          >
+            <div
+              class="flex align-center justify-between mt-2 p-1"
+              @click="showItems(key)"
+            >
+              <div>{{ item.name }}</div>
+              <div
+                class="primary"
+                style="font-weight: bold; font-size: 28rpx;"
+              >{{ item.total || '--' }}</div>
+            </div>
+            <div
+              class="items"
+              style="border-radius: 10rpx; background: #ececec;"
+              :class="currentShow === key ? 'show my-1 p-2' : 'hide'"
+            >
+              <template v-if="currentShow === key">
+                <div
+                  class="grid text-center"
+                  v-for="(it, i) in item.items"
+                  :key="i"
+                >
+                  <span class="label">{{ it.label }}</span>
+                  <span>{{ it.percentage }}</span>
+                  <span>{{ it.most }}</span>
+                  <span>{{ it.score }}</span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+        <div
+          style="height: 500rpx;"
+          v-if="loading"
+        >
+          <LoaderCircle />
+        </div>
       </div>
     </div>
   </div>
@@ -113,8 +115,7 @@ export default {
 
 <style scoped>
 .main {
-  height: 100vh;
-  padding: 40rpx 40rpx;
+  min-height: 100vh;
 }
 
 .card {
@@ -138,10 +139,10 @@ export default {
 }
 
 .show {
-  height: auto;
+  max-height: 300px;
 }
 
 .hide {
-  height: 0;
+  max-height: 0;
 }
 </style>

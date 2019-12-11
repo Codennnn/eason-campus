@@ -53,7 +53,7 @@
               :key="key"
             >
               <span>{{ item.period }}</span>
-              <span class="name">{{ item.name }}</span>
+              <span class="name">{{ item.name }} [{{ item.addr }}]</span>
             </div>
           </template>
           <!-- 周末愉快 -->
