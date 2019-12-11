@@ -165,13 +165,12 @@ export default {
       currentWeek: null,
       currentDate: null,
       currentDay: null,
-      // isWeekend: false,
       schedules: []
     }
   },
 
-  mounted () {
-    ;({
+  created () {
+    ({
       currentWeek: this.currentWeek,
       currentDate: this.currentDate,
       currentDay: this.currentDay
@@ -180,6 +179,7 @@ export default {
 
   computed: {
     isWeekend () {
+      // 0-周日， 6-周六
       return [0, 6].includes(this.currentDay)
     },
 
