@@ -24,7 +24,7 @@
         </div>
         <div
           class="detail"
-          :class="current === i ? 'show' : 'hide'"
+          :class="current === i ? 'show pb-2' : 'hide'"
         >
           <div class="item">
             <span class="label">时间</span>
@@ -59,6 +59,10 @@
       />
       <div class="gray">系统暂未公布考试时间</div>
     </div>
+
+    <loading :hidden="hidden">
+      加载中...
+    </loading>
   </div>
 </template>
 
@@ -69,7 +73,8 @@ export default {
   data () {
     return {
       examTime: [],
-      current: null
+      current: null,
+      hidden: false
     }
   },
 
@@ -79,14 +84,17 @@ export default {
 
   methods: {
     async getExamTime () {
+      mpvue.showNavigationBarLoading()
+      this.hidden = false
+
       try {
-        mpvue.showNavigationBarLoading()
         const account = mpvue.getStorageSync('user')
         const { code, data } = await getExamTime(account)
         if (code === 1000) {
           this.examTime = data.exam_time
         }
       } finally {
+        this.hidden = true
         mpvue.hideNavigationBarLoading()
         mpvue.stopPullDownRefresh()
       }
