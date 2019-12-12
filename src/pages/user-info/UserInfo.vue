@@ -19,7 +19,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     this.info = mpvue.getStorageSync('info') || []
   }
 }

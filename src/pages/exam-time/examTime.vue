@@ -73,7 +73,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     this.getExamTime()
   },
 

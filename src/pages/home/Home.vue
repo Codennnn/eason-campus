@@ -169,7 +169,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     ({
       currentWeek: this.currentWeek,
       currentDate: this.currentDate,

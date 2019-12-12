@@ -37,7 +37,7 @@ export default {
 
   components: { LoaderCircle },
 
-  created () {
+  mounted () {
     this.getAttendance()
   },
 

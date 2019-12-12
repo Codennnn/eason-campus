@@ -159,7 +159,7 @@ export default {
 
   components: { LoaderCircle },
 
-  created () {
+  mounted () {
     this.account = mpvue.getStorageSync('user')
     this.getCurrentGrades()
   },
