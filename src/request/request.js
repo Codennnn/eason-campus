@@ -1,21 +1,21 @@
 const request = {
-  get (url, data) {
+  get(url, data) {
     return new Promise((resolve, reject) => {
       wx.request({
         url,
         data,
         method: 'GET',
-        success (res) {
+        success(res) {
           resolve(res.data)
         },
-        fail (error) {
+        fail(error) {
           reject(error)
         }
       })
     })
   },
 
-  post (url, data) {
+  post(url, data) {
     return new Promise((resolve, reject) => {
       wx.request({
         url,
@@ -24,10 +24,10 @@ const request = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        success (res) {
+        success(res) {
           resolve(res.data)
         },
-        fail (error) {
+        fail(error) {
           reject(error)
         }
       })

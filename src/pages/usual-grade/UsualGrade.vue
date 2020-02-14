@@ -57,7 +57,7 @@ import { getUsualGrades } from '@/request/api'
 import LoaderCircle from '@/components/LoaderCircle'
 
 export default {
-  data () {
+  data() {
     return {
       itmes: [],
       currentShow: null,
@@ -67,12 +67,12 @@ export default {
 
   components: { LoaderCircle },
 
-  mounted () {
+  mounted() {
     this.getUsualGrades()
   },
 
   methods: {
-    async getUsualGrades () {
+    async getUsualGrades() {
       try {
         this.loading = true
         const account = mpvue.getStorageSync('user')
@@ -88,7 +88,7 @@ export default {
           content: '呜呜呜，服务器罢工了',
           confirmText: '再试一下',
           confirmColor: '#5d97f7',
-          success ({ confirm, cancel }) {
+          success({ confirm, cancel }) {
             if (confirm) {
               that.getUsualGrades()
             } else if (cancel) {
@@ -101,7 +101,7 @@ export default {
       }
     },
 
-    showItems (i) {
+    showItems(i) {
       if (this.currentShow === i) {
         this.currentShow = -1
         return

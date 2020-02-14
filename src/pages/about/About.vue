@@ -46,14 +46,14 @@ const cells = [
 ]
 
 export default {
-  data () {
+  data() {
     return {
       cells,
       cache: ''
     }
   },
 
-  mounted () {
+  mounted() {
     mpvue.getStorageInfo({
       success: (res) => {
         const size = res.currentSize

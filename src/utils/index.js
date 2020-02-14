@@ -1,4 +1,4 @@
-export function getTodayInfo (start) {
+export function getTodayInfo(start) {
   const WEEKLEN = 7 // 一周7天为常量
   const oneDay = 1000 * 60 * 60 * 24 // 一天的毫秒时长
   let weekLeave // 开学当天所在周剩余天数

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       imgUrls: [
         'https://ws1.sinaimg.cn/large/775017f8gy1g6xw8x1g6tj20i90n4jsi.jpg',
@@ -26,14 +26,14 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     mpvue.setNavigationBarTitle({
       title: '2019-2020 华软校历'
     })
   },
 
   methods: {
-    preview (i) {
+    preview(i) {
       mpvue.previewImage({
         current: this.imgUrls[i],
         urls: this.imgUrls

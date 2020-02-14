@@ -194,7 +194,7 @@
  
 <script>
 export default {
-  data () {
+  data() {
     return {
       currentDay: null,
       currentWeek: null,
@@ -222,7 +222,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     const state = this.$store.state
     this.currentWeek = state.currentWeek
     this.currentDay = state.currentDay
@@ -230,11 +230,11 @@ export default {
   },
 
   computed: {
-    logged () {
+    logged() {
       return this.$store.state.logged
     },
 
-    schedule () {
+    schedule() {
       if (this.logged && this.currentWeek) {
         this.active = false
         return this.getCurrentSchedule(this.currentWeek)
@@ -245,7 +245,7 @@ export default {
 
   methods: {
     // 获取当前周的课表
-    getCurrentSchedule (week) {
+    getCurrentSchedule(week) {
       if (week <= 18) {
         return mpvue.getStorageSync('schedule').map(el => {
           return el.map(item => {
@@ -262,35 +262,35 @@ export default {
       return mpvue.getStorageSync('schedule')
     },
 
-    setNavigationBarTitle (week) {
+    setNavigationBarTitle(week) {
       mpvue.setNavigationBarTitle({
         title: `第 ${week} 周课表`
       })
     },
 
-    weekChange (e) {
+    weekChange(e) {
       this.currentWeek = +e.mp.detail.value + 1
       this.setNavigationBarTitle(this.currentWeek)
     },
 
-    setCurrentSchedule () {
+    setCurrentSchedule() {
       const state = this.$store.state
       this.currentWeek = state.currentWeek
       this.setNavigationBarTitle(this.currentWeek)
     },
 
-    setAllSchedule () {
+    setAllSchedule() {
       this.currentWeek = 19
       mpvue.setNavigationBarTitle({ title: '全学期课表' })
     },
 
-    showDetail (v) {
+    showDetail(v) {
       this.display = true
       this.detail = v
     }
   },
 
-  onShareAppMessage () {
+  onShareAppMessage() {
     return {
       title: '课表信息',
       path: '/pages/schedule/main'

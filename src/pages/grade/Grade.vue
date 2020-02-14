@@ -139,7 +139,7 @@ import { getCurrentGrades, getAllGrades } from '@/request/api'
 import LoaderCircle from '@/components/LoaderCircle'
 
 export default {
-  data () {
+  data() {
     return {
       account: {},
       currentTab: 0,
@@ -159,13 +159,13 @@ export default {
 
   components: { LoaderCircle },
 
-  mounted () {
+  mounted() {
     this.account = mpvue.getStorageSync('user')
     this.getCurrentGrades()
   },
 
   methods: {
-    swiperTab (e) {
+    swiperTab(e) {
       this.currentTab = e.mp.detail.current
 
       if (this.currentTab === 1 && this.allGrades.length === 0) {
@@ -174,7 +174,7 @@ export default {
     },
 
     // 获取当前学期成绩
-    async getCurrentGrades () {
+    async getCurrentGrades() {
       this.error = false
       this.loading = true
       this.disabled = true
@@ -203,7 +203,7 @@ export default {
     },
 
     // 获取所有成绩
-    async getAllGrades () {
+    async getAllGrades() {
       this.error = false
       this.loading2 = true
 

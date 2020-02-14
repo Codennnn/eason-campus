@@ -115,7 +115,7 @@ const inputs = [
 ]
 
 export default {
-  data () {
+  data() {
     return {
       inputs,
       loading: false
@@ -125,7 +125,7 @@ export default {
   components: { LoaderLine },
 
   computed: {
-    disabled () {
+    disabled() {
       return !(
         this.inputs[0].value.length > 0 &&
         this.inputs[1].value.length > 0
@@ -134,13 +134,13 @@ export default {
   },
 
   methods: {
-    enter (e) {
+    enter(e) {
       this.debounce(this.getInputValue, 500)(e)
     },
 
     // 防抖函数
-    debounce (fn, delay) {
-      return function (args) {
+    debounce(fn, delay) {
+      return function(args) {
         const _args = args
 
         clearTimeout(fn.id)
@@ -151,7 +151,7 @@ export default {
       }
     },
 
-    getInputValue (e) {
+    getInputValue(e) {
       const value = e.target.value
       const id = e.target.id
       if (id === 'username') {
@@ -163,7 +163,7 @@ export default {
       }
     },
 
-    focus (i) {
+    focus(i) {
       const input = this.inputs[i]
       if (input.value.length > 0) {
         input.focus = true
@@ -171,15 +171,15 @@ export default {
       }
     },
 
-    blur (i) {
+    blur(i) {
       this.inputs[i].focus = false
     },
 
-    clear (i) {
+    clear(i) {
       this.inputs[i].value = ''
     },
 
-    async login () {
+    async login() {
       // 显示加载动画
       this.loading = true
 

@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       imgs: [
         'https://gitee.com/chinesee/images/raw/master/img/img_002.png',
@@ -48,7 +48,7 @@ export default {
   },
 
   methods: {
-    preview (i) {
+    preview(i) {
       mpvue.previewImage({
         current: this.imgs[i],
         urls: this.imgs

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './Home'
 
-Vue.config.errorHandler = function (err) {
+Vue.config.errorHandler = function(err) {
   if (console && console.error) {
     console.error(err)
   }

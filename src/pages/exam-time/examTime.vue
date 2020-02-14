@@ -70,7 +70,7 @@
 import { getExamTime } from '@/request/api'
 
 export default {
-  data () {
+  data() {
     return {
       examTime: [],
       current: null,
@@ -78,12 +78,12 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     this.getExamTime()
   },
 
   methods: {
-    async getExamTime () {
+    async getExamTime() {
       mpvue.showNavigationBarLoading()
       this.hidden = false
 
@@ -100,7 +100,7 @@ export default {
       }
     },
 
-    setCurrent (i) {
+    setCurrent(i) {
       if (this.current === i) {
         this.current = null
         return
@@ -108,12 +108,12 @@ export default {
       this.current = i
     },
 
-    compare (date) {
+    compare(date) {
       return (new Date(date).getTime() > Date.now())
     }
   },
 
-  onPullDownRefresh () {
+  onPullDownRefresh() {
     this.getExamTime()
   }
 }

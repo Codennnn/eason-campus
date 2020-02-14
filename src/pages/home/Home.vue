@@ -157,7 +157,7 @@ const sections = [
 const days = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 
 export default {
-  data () {
+  data() {
     return {
       blocks,
       sections,
@@ -169,7 +169,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     ({
       currentWeek: this.currentWeek,
       currentDate: this.currentDate,
@@ -178,12 +178,12 @@ export default {
   },
 
   computed: {
-    isWeekend () {
+    isWeekend() {
       // 0-周日， 6-周六
       return [0, 6].includes(this.currentDay)
     },
 
-    logged () {
+    logged() {
       const logged = this.$store.state.logged
       if (logged && this.currentDay && !this.isWeekend) {
         this.setSchedule(this.currentDay - 1, this.currentWeek)
@@ -193,7 +193,7 @@ export default {
   },
 
   methods: {
-    setSchedule (day, week) {
+    setSchedule(day, week) {
       const schedules = []
 
       const periods = [
@@ -222,7 +222,7 @@ export default {
       this.schedules = schedules
     },
 
-    routerTo (url) {
+    routerTo(url) {
       if (this.logged) {
         if (url.length > 0) {
           mpvue.navigateTo({ url })
@@ -232,7 +232,7 @@ export default {
           content: '您还没有绑定 Myscse 账号哦',
           confirmText: '去绑定',
           confirmColor: '#5d97f7',
-          success ({ confirm }) {
+          success({ confirm }) {
             if (confirm) {
               mpvue.navigateTo({ url: '../login/main' })
             }
@@ -242,7 +242,7 @@ export default {
     }
   },
 
-  onShareAppMessage () {
+  onShareAppMessage() {
     return {
       title: '首页',
       path: '/pages/home/main'

@@ -28,7 +28,7 @@ import { getAttendance } from '@/request/api'
 import LoaderCircle from '@/components/LoaderCircle'
 
 export default {
-  data () {
+  data() {
     return {
       loading: false,
       items: []
@@ -37,12 +37,12 @@ export default {
 
   components: { LoaderCircle },
 
-  mounted () {
+  mounted() {
     this.getAttendance()
   },
 
   methods: {
-    async getAttendance () {
+    async getAttendance() {
       const account = mpvue.getStorageSync('user')
       try {
         this.loading = true
@@ -58,7 +58,7 @@ export default {
           content: '呜呜呜，服务器罢工了',
           confirmText: '再试一下',
           confirmColor: '#5d97f7',
-          success ({ confirm, cancel }) {
+          success({ confirm, cancel }) {
             if (confirm) {
               that.getAttendance(account)
             } else if (cancel) {

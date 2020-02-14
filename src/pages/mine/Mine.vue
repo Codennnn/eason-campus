@@ -171,7 +171,7 @@ const cells = [
 ]
 
 export default {
-  data () {
+  data() {
     return {
       showMask: false, // 是否显示遮罩层
       sections,
@@ -180,11 +180,11 @@ export default {
   },
 
   computed: {
-    logged () {
+    logged() {
       return this.$store.state.logged
     },
 
-    info () {
+    info() {
       const info = this.$store.state.info
       if (info.length > 0) {
         return [info[2].value, info[1].value, info[9].value]
@@ -194,7 +194,7 @@ export default {
   },
 
   methods: {
-    goToLogin () {
+    goToLogin() {
       if (this.logged) {
         this.showMask = true
       } else {
@@ -202,7 +202,7 @@ export default {
       }
     },
 
-    viewInfo () {
+    viewInfo() {
       if (this.logged) {
         mpvue.navigateTo({ url: '../user-info/main' })
       } else {
@@ -210,7 +210,7 @@ export default {
           content: '您还没有绑定 Myscse 账号哦',
           confirmText: '去绑定',
           confirmColor: '#5d97f7',
-          success ({ confirm }) {
+          success({ confirm }) {
             if (confirm) {
               mpvue.navigateTo({ url: '../login/main' })
             }
@@ -219,20 +219,20 @@ export default {
       }
     },
 
-    toMiniProgram () {
+    toMiniProgram() {
       mpvue.navigateToMiniProgram({
         appId: 'wx7a674884ec88d424'
       })
     },
 
-    logout () {
+    logout() {
       this.showMask = false
       this.$store.commit('logout')
       mpvue.navigateTo({ url: '../login/main' })
     }
   },
 
-  onShareAppMessage () {
+  onShareAppMessage() {
     return {
       title: '个人中心',
       path: '/pages/mine/main'
