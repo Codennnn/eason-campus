@@ -1,9 +1,13 @@
+
+// const host = 'http://localhost:7001' // 测试环境
+const host = 'https://hrspider.top/api' // 线上环境
+
 const request = {
   get(url, data) {
     return new Promise((resolve, reject) => {
       wx.request({
-        url,
         data,
+        url: `${host}${url}`,
         method: 'GET',
         success(res) {
           resolve(res.data)
@@ -18,12 +22,10 @@ const request = {
   post(url, data) {
     return new Promise((resolve, reject) => {
       wx.request({
-        url,
         data,
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
+        url: `${host}${url}`,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         success(res) {
           resolve(res.data)
         },

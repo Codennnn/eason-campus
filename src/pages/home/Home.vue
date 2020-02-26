@@ -251,7 +251,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   display: flex;
   flex-direction: column;
@@ -260,9 +260,9 @@ export default {
 }
 
 .banner-img {
-  width: 100%;
   position: relative;
   z-index: 9999;
+  width: 100%;
   box-shadow: 0 0 45rpx #f9f7fa;
 }
 
@@ -275,11 +275,10 @@ export default {
 
 .card {
   box-sizing: border-box;
-  margin-bottom: 25rpx;
+  margin-bottom: 30rpx;
   padding: 15rpx;
   background: white;
-  box-shadow: 0 0 20rpx #ececec;
-  border-radius: 20rpx;
+  border-radius: $radius;
 }
 
 .name {

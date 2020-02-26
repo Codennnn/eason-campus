@@ -28,10 +28,6 @@ export default {
 </script>
 
 <style>
-@import "./styles/iconfont/iconfont.css";
-@import "./styles/common.css";
-@import "./styles/distance.css";
-
 .main {
   font-size: 30rpx;
   background: #f9f7fa;

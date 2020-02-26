@@ -1,0 +1,111 @@
+$sizes:1,
+2,
+3,
+4,
+5;
+
+@each $size in $sizes {
+  .p-#{$size} {
+    padding: #{$size}0rpx;
+  }
+
+  .pl-#{$size} {
+    padding-left: #{$size}0rpx;
+  }
+
+  .pr-#{$size} {
+    padding-right: #{$size}0rpx;
+  }
+
+  .pt-#{$size} {
+    padding-top: #{$size}0rpx;
+  }
+
+  .pb-#{$size} {
+    padding-bottom: #{$size}0rpx;
+  }
+
+  .px-#{$size} {
+    padding-left: #{$size}0rpx;
+    padding-right: #{$size}0rpx;
+  }
+
+  .py-#{$size} {
+    padding-top: #{$size}0rpx;
+    padding-bottom: #{$size}0rpx;
+  }
+
+  .m-#{$size} {
+    margin: #{$size}0rpx;
+  }
+
+  .ml-#{$size} {
+    margin-left: #{$size}0rpx;
+  }
+
+  .mr-#{$size} {
+    margin-right: #{$size}0rpx;
+  }
+
+  .mt-#{$size} {
+    margin-top: #{$size}0rpx;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: #{$size}0rpx;
+  }
+
+  .mx-#{$size} {
+    margin-left: #{$size}0rpx;
+    margin-right: #{$size}0rpx;
+  }
+
+  .my-#{$size} {
+    margin-top: #{$size}0rpx;
+    margin-bottom: #{$size}0rpx;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.primary {
+  color: $primary;
+}
+
+.gray {
+  color: $gray;
+}
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-white {
+  background: white;
+}

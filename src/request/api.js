@@ -1,47 +1,44 @@
 import request from './request'
 
-// 测试环境
-// const host = 'http://localhost:7001'
-// 线上环境
-const host = 'https://hrspider.top/api'
+const { post } = request
 
 // 登录
 export function login(data) {
-  return request.post(`${host}/login`, data)
+  return post(`/login`, data)
 }
 
 // 学生信息
 export function getStudentInfo(data) {
-  return request.post(`${host}/info`, data)
+  return post(`/info`, data)
 }
 
 // 课表信息
 export function getSchedule(data) {
-  return request.post(`${host}/schedule`, data)
+  return post(`/schedule`, data)
 }
 
 // 当前学期的成绩
 export function getCurrentGrades(data) {
   data.current_term = '2019年第一学期'
-  return request.post(`${host}/current-grade`, data)
+  return post(`/current-grade`, data)
 }
 
 // 全部学期的成绩
 export function getAllGrades(data) {
-  return request.post(`${host}/all-grades`, data)
+  return post(`/all-grades`, data)
 }
 
 // 考试时间
 export function getExamTime(data) {
-  return request.post(`${host}/exam-time`, data)
+  return post(`/exam-time`, data)
 }
 
 // 考勤信息
 export function getAttendance(data) {
-  return request.post(`${host}/attendance`, data)
+  return post(`/attendance`, data)
 }
 
 // 平时成绩
 export function getUsualGrades(data) {
-  return request.post(`${host}/usual-grades`, data)
+  return post(`/usual-grades`, data)
 }

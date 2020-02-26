@@ -241,7 +241,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   position: relative;
   min-height: calc(100vh - 60rpx);
@@ -284,8 +284,8 @@ export default {
 
 .user-card {
   margin-top: 40rpx;
-  border-radius: 10rpx;
-  box-shadow: 0 0 30rpx #ececec;
+  border-radius: $radius;
+  box-shadow: $shadow;
 }
 
 .user-card__header {

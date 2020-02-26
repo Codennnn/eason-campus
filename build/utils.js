@@ -39,8 +39,18 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  // 全局使用 scss 变量
+  var sassResourceLoader = {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: [
+        path.resolve(__dirname, '../src/styles/variables.scss'),
+      ]
+    }
+  }
+
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders(loader, loaderOptions, anotherLoader) {
     var loaders = [cssLoader, px2rpxLoader, postcssLoader]
     if (loader) {
       loaders.push({
@@ -50,6 +60,9 @@ exports.cssLoaders = function (options) {
         })
       })
     }
+
+    // 添加其它 loader
+    if (!!anotherLoader) loaders.push(anotherLoader)
 
     // Extract CSS when that option is specified
     // (which is the case during production build)
@@ -69,8 +82,8 @@ exports.cssLoaders = function (options) {
     wxss: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    sass: generateLoaders('sass', { indentedSyntax: true }, sassResourceLoader),
+    scss: generateLoaders('sass', {}, sassResourceLoader),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }
