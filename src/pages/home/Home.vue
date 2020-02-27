@@ -76,8 +76,8 @@
 
         <!-- 去登录 -->
         <div
-          class="to-login text-center p-3"
           v-if="!logged"
+          class="to-login text-center p-3"
         >
           <div>
             <image

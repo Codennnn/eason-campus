@@ -54,7 +54,7 @@
       <image
         class="mb-3"
         style="width: 350rpx;"
-        src="/static/images/empty-1.svg"
+        src="/static/images/empty-1.png"
         mode="widthFix"
       />
       <div class="gray">系统暂未公布考试时间</div>

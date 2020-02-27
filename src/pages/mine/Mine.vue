@@ -105,8 +105,8 @@
     </div>
 
     <div
-      class="mask"
       v-if="showMask"
+      class="mask"
       @click="showMask = false"
     >
       <div class="mask-modal">
@@ -118,7 +118,9 @@
           />
         </div>
         <div class="bg-white p-3">
-          <div class="mask-modal__text gray">解绑账号后会清除本地缓存数据，如个人信息、成绩、课表信息等，但在下次登录时仍会重新获取。</div>
+          <div class="mask-modal__text gray">
+            解绑账号后会清除本地缓存数据，如个人信息、成绩、课表信息等，但在下次登录时仍会重新获取。
+          </div>
           <div class="footer flex align-center justify-between mt-4">
             <div
               class="footer-btn bg-white"
@@ -153,11 +155,6 @@ const sections = [
   }
 ]
 const cells = [
-  // {
-  //   title: '个人信息',
-  //   icon: 'icon-block',
-  //   url: '../user-info/main'
-  // },
   {
     title: '关于本程序',
     icon: 'icon-code',
@@ -319,7 +316,7 @@ export default {
   left: 0;
   width: 100%;
   min-height: 100%;
-  background: rgba(90, 90, 90, 0.4);
+  background: rgba(90, 90, 90, 0.3);
 }
 .mask-modal {
   position: absolute;
@@ -327,9 +324,9 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   width: 75%;
-  border-radius: 10rpx;
+  border-radius: $radius;
   overflow: hidden;
-  animation: 0.3s ease 0s scale;
+  animation: scale 0.3s;
 }
 @keyframes scale {
   from {
@@ -352,6 +349,6 @@ export default {
   height: 63rpx;
   line-height: 63rpx;
   text-align: center;
-  border-radius: 8rpx;
+  border-radius: $radius;
 }
 </style>
