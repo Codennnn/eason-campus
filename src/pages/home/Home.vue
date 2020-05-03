@@ -5,7 +5,6 @@
       src="/static/images/img-banner.png"
       mode="widthFix"
     />
-
     <div class="content p-4">
       <!-- 首要功能 -->
       <div class="card flex justify-around">
