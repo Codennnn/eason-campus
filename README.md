@@ -22,7 +22,7 @@
 ## 项目运行
 ``` bash
 # 安装依赖
-yarn 或 npm install
+npm install
 
 # 开发时构建
 npm run dev
