@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./images/logo.png" width="120" style="margin-bottom: 15px" alt="首页" >
+  <img src="./images/logo.png" width="120" alt="logo" >
   <h1>意想课表</h1>
   <p>高校教务系统信息查询小程序</p>
 </div>
