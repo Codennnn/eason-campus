@@ -1,25 +1,15 @@
-<div align="center">
-  <img src="./images/logo.png" width="120" alt="logo" >
-  <h1>意想课表</h1>
-  <p>高校教务系统信息查询小程序</p>
-</div>
+![看不到图片？开个 VPN 吧](./images/cover.jpeg)
 
-## 界面展示
+## 简介
 
-<div align="center">
-<img src="./images/preview-1.jpeg" width="22%" style="margin:0 10px;" alt="首页" >
-<img src="./images/preview-2.jpeg" width="22%" style="margin:0 10px;" alt="课表页" >
-<img src="./images/preview-3.jpeg" width="22%" style="margin:0 10px;" alt="个人中心页" >
-<img src="./images/preview-4.jpeg" width="22%" style="margin:0 10px;" alt="登录页" >
-</div>
+意想校园是一个教务系统信息查询小程序，用于帮助学生们查课表、查成绩、查考勤。
 
-## 介绍
+[查看高清应用界面 👀](https://www.figma.com/file/WyEwLwZTlhPGtUE0CpRODr/%E6%84%8F%E6%83%B3%E6%A0%A1%E5%9B%AD%E5%B0%8F%E7%A8%8B%E5%BA%8F?node-id=1%3A26)
 
-意想课表是一个教务系统信息查询小程序，用于帮助学生们查课表、查成绩、查考勤。
+> 这是我在大学期间开发的第一款小程序，让我真正体会到开发一款实用程序的乐趣，感谢所有曾经使用此应用并提出改善建议的用户！
+>
+>如果你也想为你的学校开发一个校园助手小程序，我很乐意提供协助 😉。
 
-这是我在大学期间开发的第一款小程序，是它让我真正体会到构建一款实用程序的乐趣，感谢所有曾经使用它并提出改善建议的用户！
-
-如果你也想为你的学校开发一个校园助手小程序，我很乐意提供协助。
 
 ## 项目运行
 
