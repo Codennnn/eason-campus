@@ -1,4 +1,4 @@
-![看不到图片？开个 VPN 吧](./images/cover.jpeg)
+![看不到图片？开个 VPN 吧](./images/cover.png)
 
 ## 简介
 
